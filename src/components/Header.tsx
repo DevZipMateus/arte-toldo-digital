@@ -23,31 +23,6 @@ const Header = React.memo(() => {
 
   return (
     <>
-      {/* Top Bar */}
-      <div className="bg-arte-blue-navy text-white py-2 px-2 sm:px-4 text-xs sm:text-sm">
-        <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center space-y-2 lg:space-y-0">
-          <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 text-center sm:text-left">
-            <div className="flex items-center space-x-2">
-              <Clock className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
-              <span className="text-xs sm:text-sm">Segunda a sexta 8h às 18h</span>
-            </div>
-            <div className="hidden md:flex items-center space-x-2">
-              <MapPin className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
-              <span className="text-xs sm:text-sm">Rua Piauí, 5816 - Lagoa, Porto Velho - RO</span>
-            </div>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Phone className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
-            <a 
-              href="https://wa.me/5569993067833" 
-              className="hover:text-arte-blue-light transition-colors text-xs sm:text-sm"
-            >
-              (69) 99306-7833
-            </a>
-          </div>
-        </div>
-      </div>
-
       {/* Main Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-lg will-change-transform">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
