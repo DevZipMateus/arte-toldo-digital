@@ -1,28 +1,67 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { Menu, X, Phone, Clock, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const Header = () => {
+const Header = React.memo(() => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+  // Debounce scroll handler para melhor performance
+  const handleScroll = useCallback(() => {
+    const scrolled = window.scrollY > 20;
+    setIsScrolled(scrolled);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
+  useEffect(() => {
+    // Debounce implementation
+    let timeoutId: NodeJS.Timeout;
+    const debouncedHandleScroll = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(handleScroll, 10);
+    };
+
+    window.addEventListener('scroll', debouncedHandleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', debouncedHandleScroll);
+      clearTimeout(timeoutId);
+    };
+  }, [handleScroll]);
+
+  const scrollToSection = useCallback((sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setIsMenuOpen(false);
     }
-  };
+  }, []);
+
+  const navigationItems = useMemo(() => [
+    { label: 'Início', id: 'inicio' },
+    { label: 'Sobre', id: 'sobre' },
+    { label: 'Produtos', id: 'produtos' },
+    { label: 'Contato', id: 'contato' }
+  ], []);
+
+  const headerClasses = useMemo(() => 
+    `fixed top-10 left-0 right-0 z-50 transition-all duration-300 will-change-transform ${
+      isScrolled 
+        ? 'bg-white/95 backdrop-blur-sm shadow-lg' 
+        : 'bg-transparent'
+    }`, [isScrolled]
+  );
+
+  const logoTextClasses = useMemo(() => 
+    `text-xl font-bold transition-colors ${
+      isScrolled ? 'text-arte-blue-royal' : 'text-white'
+    }`, [isScrolled]
+  );
+
+  const logoSubtextClasses = useMemo(() => 
+    `text-sm transition-colors ${
+      isScrolled ? 'text-arte-gray' : 'text-white/80'
+    }`, [isScrolled]
+  );
 
   return (
     <>
@@ -52,11 +91,7 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <header className={`fixed top-10 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-sm shadow-lg' 
-          : 'bg-transparent'
-      }`}>
+      <header className={headerClasses}>
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-4">
             {/* Logo */}
@@ -64,17 +99,13 @@ const Header = () => {
               <img 
                 src="/lovable-uploads/05e7ad14-3936-4e92-847f-300a1eeb16da.png" 
                 alt="Arte Toldo - Logo"
-                className="h-12 w-auto"
+                className="h-12 w-auto will-change-transform"
               />
               <div className="hidden md:block">
-                <h1 className={`text-xl font-bold transition-colors ${
-                  isScrolled ? 'text-arte-blue-royal' : 'text-white'
-                }`}>
+                <h1 className={logoTextClasses}>
                   Arte Toldo
                 </h1>
-                <p className={`text-sm transition-colors ${
-                  isScrolled ? 'text-arte-gray' : 'text-white/80'
-                }`}>
+                <p className={logoSubtextClasses}>
                   Um legado em tendas e toldos
                 </p>
               </div>
@@ -82,12 +113,7 @@ const Header = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-8">
-              {[
-                { label: 'Início', id: 'inicio' },
-                { label: 'Sobre', id: 'sobre' },
-                { label: 'Produtos', id: 'produtos' },
-                { label: 'Contato', id: 'contato' }
-              ].map((item) => (
+              {navigationItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
@@ -104,7 +130,7 @@ const Header = () => {
             <div className="hidden md:block">
               <Button 
                 variant="outline"
-                className={`border-2 font-semibold transition-all hover:scale-105 ${
+                className={`border-2 font-semibold transition-all hover:scale-105 will-change-transform ${
                   isScrolled 
                     ? 'border-arte-blue-royal text-arte-blue-royal bg-white/10 hover:bg-arte-blue-royal hover:text-white' 
                     : 'border-white/60 text-white bg-white/10 hover:bg-white hover:text-arte-blue-royal'
@@ -131,15 +157,10 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="lg:hidden bg-white/95 backdrop-blur-sm border-t">
+          <div className="lg:hidden bg-white/95 backdrop-blur-sm border-t will-change-transform">
             <div className="container mx-auto px-4 py-6">
               <nav className="flex flex-col space-y-4">
-                {[
-                  { label: 'Início', id: 'inicio' },
-                  { label: 'Sobre', id: 'sobre' },
-                  { label: 'Produtos', id: 'produtos' },
-                  { label: 'Contato', id: 'contato' }
-                ].map((item) => (
+                {navigationItems.map((item) => (
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
@@ -161,6 +182,8 @@ const Header = () => {
       </header>
     </>
   );
-};
+});
+
+Header.displayName = 'Header';
 
 export default Header;

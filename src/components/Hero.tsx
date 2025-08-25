@@ -1,20 +1,38 @@
 
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Shield, Award, Clock, ArrowRight } from 'lucide-react';
 
-const Hero = () => {
-  const scrollToSection = (sectionId: string) => {
+const Hero = React.memo(() => {
+  const scrollToSection = useCallback((sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-  };
+  }, []);
+
+  const features = useMemo(() => [
+    {
+      icon: Shield,
+      title: 'Qualidade Garantida',
+      description: 'Produtos com materiais de primeira qualidade e acabamento perfeito'
+    },
+    {
+      icon: Clock,
+      title: 'Atendimento Rápido',
+      description: 'Nosso consultor vai até você para orçamento sem compromisso'
+    },
+    {
+      icon: Award,
+      title: '20+ Anos',
+      description: 'Experiência consolidada no mercado de toldos e coberturas'
+    }
+  ], []);
 
   return (
     <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background com gradiente */}
-      <div className="absolute inset-0 arte-gradient-primary"></div>
+      <div className="absolute inset-0 arte-gradient-primary will-change-transform"></div>
       
       {/* Pattern overlay */}
       <div className="absolute inset-0 opacity-10">
@@ -49,7 +67,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-up">
             <Button 
               size="lg"
-              className="bg-white text-arte-blue-royal hover:bg-blue-50 font-semibold px-8 py-4 text-lg group transition-all hover:scale-105 arte-shadow-soft"
+              className="bg-white text-arte-blue-royal hover:bg-blue-50 font-semibold px-8 py-4 text-lg group transition-all hover:scale-105 arte-shadow-soft will-change-transform"
               onClick={() => scrollToSection('contato')}
             >
               Solicitar Orçamento
@@ -59,7 +77,7 @@ const Hero = () => {
             <Button 
               variant="outline"
               size="lg" 
-              className="border-white/60 text-white bg-white/10 hover:bg-white hover:text-arte-blue-royal font-semibold px-8 py-4 text-lg backdrop-blur-sm transition-all hover:scale-105"
+              className="border-white/60 text-white bg-white/10 hover:bg-white hover:text-arte-blue-royal font-semibold px-8 py-4 text-lg backdrop-blur-sm transition-all hover:scale-105 will-change-transform"
               onClick={() => scrollToSection('produtos')}
             >
               Ver Produtos
@@ -68,39 +86,27 @@ const Hero = () => {
 
           {/* Features */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in">
-            <div className="text-center">
-              <div className="bg-white/10 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-8 h-8" />
+            {features.map((feature, index) => (
+              <div key={index} className="text-center">
+                <div className="bg-white/10 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 will-change-transform">
+                  <feature.icon className="w-8 h-8" />
+                </div>
+                <h3 className="font-semibold mb-2">{feature.title}</h3>
+                <p className="text-blue-100 text-sm">{feature.description}</p>
               </div>
-              <h3 className="font-semibold mb-2">Qualidade Garantida</h3>
-              <p className="text-blue-100 text-sm">Produtos com materiais de primeira qualidade e acabamento perfeito</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="bg-white/10 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-8 h-8" />
-              </div>
-              <h3 className="font-semibold mb-2">Atendimento Rápido</h3>
-              <p className="text-blue-100 text-sm">Nosso consultor vai até você para orçamento sem compromisso</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="bg-white/10 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <Award className="w-8 h-8" />
-              </div>
-              <h3 className="font-semibold mb-2">20+ Anos</h3>
-              <p className="text-blue-100 text-sm">Experiência consolidada no mercado de toldos e coberturas</p>
-            </div>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Decorative elements */}
-      <div className="absolute top-20 left-10 w-20 h-20 border border-white/20 rounded-full animate-float"></div>
-      <div className="absolute bottom-20 right-10 w-16 h-16 border border-white/20 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
-      <div className="absolute top-1/2 right-20 w-8 h-8 bg-white/10 rounded-full animate-float" style={{ animationDelay: '4s' }}></div>
+      <div className="absolute top-20 left-10 w-20 h-20 border border-white/20 rounded-full animate-float will-change-transform"></div>
+      <div className="absolute bottom-20 right-10 w-16 h-16 border border-white/20 rounded-full animate-float will-change-transform" style={{ animationDelay: '2s' }}></div>
+      <div className="absolute top-1/2 right-20 w-8 h-8 bg-white/10 rounded-full animate-float will-change-transform" style={{ animationDelay: '4s' }}></div>
     </section>
   );
-};
+});
+
+Hero.displayName = 'Hero';
 
 export default Hero;
