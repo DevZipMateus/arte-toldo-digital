@@ -47,59 +47,62 @@ const Hero = React.memo(() => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center text-white max-w-4xl mx-auto">
-          {/* Badge - with subtle background for better contrast */}
-          <div className="inline-flex items-center bg-black/20 backdrop-blur-sm rounded-full px-6 py-2 mb-8 animate-slide-up">
-            <Award className="w-5 h-5 mr-2" />
-            <span className="text-sm font-medium">Mais de 20 anos de experiência</span>
-          </div>
+        {/* Container with black semi-transparent background */}
+        <div className="bg-black/50 backdrop-blur-sm rounded-2xl p-8 md:p-12 max-w-5xl mx-auto">
+          <div className="text-center text-white">
+            {/* Badge - with subtle background for better contrast */}
+            <div className="inline-flex items-center bg-black/20 backdrop-blur-sm rounded-full px-6 py-2 mb-8 animate-slide-up">
+              <Award className="w-5 h-5 mr-2" />
+              <span className="text-sm font-medium">Mais de 20 anos de experiência</span>
+            </div>
 
-          {/* Main Heading - removed gradient from "tendas e toldos" to fix blur */}
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight animate-slide-up text-shadow-lg">
-            Um legado em
-            <span className="block text-white">
-              tendas e toldos
-            </span>
-          </h1>
+            {/* Main Heading - removed gradient from "tendas e toldos" to fix blur */}
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight animate-slide-up text-shadow-lg">
+              Um legado em
+              <span className="block text-white">
+                tendas e toldos
+              </span>
+            </h1>
 
-          {/* Subtitle - with text shadow */}
-          <p className="text-xl md:text-2xl text-blue-100 mb-12 max-w-3xl mx-auto leading-relaxed animate-slide-up text-shadow-md">
-            Somos uma empresa séria e responsável com produtos inovadores e tecnológicos. 
-            Oferecemos serviço totalmente personalizado para o que você desejar.
-          </p>
+            {/* Subtitle - with text shadow */}
+            <p className="text-xl md:text-2xl text-blue-100 mb-12 max-w-3xl mx-auto leading-relaxed animate-slide-up text-shadow-md">
+              Somos uma empresa séria e responsável com produtos inovadores e tecnológicos. 
+              Oferecemos serviço totalmente personalizado para o que você desejar.
+            </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-up">
-            <Button 
-              size="lg"
-              className="bg-white text-arte-blue-royal hover:bg-blue-50 font-semibold px-8 py-4 text-lg group transition-all hover:scale-105 arte-shadow-soft will-change-transform"
-              onClick={() => scrollToSection('contato')}
-            >
-              Solicitar Orçamento
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            
-            <Button 
-              variant="outline"
-              size="lg" 
-              className="border-white/80 text-white bg-black/20 hover:bg-white hover:text-arte-blue-royal font-semibold px-8 py-4 text-lg backdrop-blur-sm transition-all hover:scale-105 will-change-transform"
-              onClick={() => scrollToSection('produtos')}
-            >
-              Ver Produtos
-            </Button>
-          </div>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-up">
+              <Button 
+                size="lg"
+                className="bg-white text-arte-blue-royal hover:bg-blue-50 font-semibold px-8 py-4 text-lg group transition-all hover:scale-105 arte-shadow-soft will-change-transform"
+                onClick={() => scrollToSection('contato')}
+              >
+                Solicitar Orçamento
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+              
+              <Button 
+                variant="outline"
+                size="lg" 
+                className="border-white/80 text-white bg-black/20 hover:bg-white hover:text-arte-blue-royal font-semibold px-8 py-4 text-lg backdrop-blur-sm transition-all hover:scale-105 will-change-transform"
+                onClick={() => scrollToSection('produtos')}
+              >
+                Ver Produtos
+              </Button>
+            </div>
 
-          {/* Features */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in">
-            {features.map((feature, index) => (
-              <div key={index} className="text-center">
-                <div className="bg-black/20 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 will-change-transform">
-                  <feature.icon className="w-8 h-8" />
+            {/* Features */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in">
+              {features.map((feature, index) => (
+                <div key={index} className="text-center">
+                  <div className="bg-black/20 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 will-change-transform">
+                    <feature.icon className="w-8 h-8" />
+                  </div>
+                  <h3 className="font-semibold mb-2 text-shadow-md">{feature.title}</h3>
+                  <p className="text-blue-100 text-sm text-shadow-sm">{feature.description}</p>
                 </div>
-                <h3 className="font-semibold mb-2 text-shadow-md">{feature.title}</h3>
-                <p className="text-blue-100 text-sm text-shadow-sm">{feature.description}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
