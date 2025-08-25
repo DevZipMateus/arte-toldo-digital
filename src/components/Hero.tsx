@@ -39,11 +39,8 @@ const Hero = React.memo(() => {
         }}
       ></div>
       
-      {/* Overlay gradient */}
-      <div className="absolute inset-0 arte-gradient-overlay will-change-transform"></div>
-      
-      {/* Pattern overlay */}
-      <div className="absolute inset-0 opacity-10">
+      {/* Pattern overlay - reduced opacity for better image visibility */}
+      <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
         }}></div>
@@ -51,22 +48,22 @@ const Hero = React.memo(() => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center text-white max-w-4xl mx-auto">
-          {/* Badge */}
-          <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 mb-8 animate-slide-up">
+          {/* Badge - with subtle background for better contrast */}
+          <div className="inline-flex items-center bg-black/20 backdrop-blur-sm rounded-full px-6 py-2 mb-8 animate-slide-up">
             <Award className="w-5 h-5 mr-2" />
             <span className="text-sm font-medium">Mais de 20 anos de experiência</span>
           </div>
 
-          {/* Main Heading */}
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight animate-slide-up">
+          {/* Main Heading - with text shadow for better readability */}
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight animate-slide-up text-shadow-lg">
             Um legado em
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200">
               tendas e toldos
             </span>
           </h1>
 
-          {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-blue-100 mb-12 max-w-3xl mx-auto leading-relaxed animate-slide-up">
+          {/* Subtitle - with text shadow */}
+          <p className="text-xl md:text-2xl text-blue-100 mb-12 max-w-3xl mx-auto leading-relaxed animate-slide-up text-shadow-md">
             Somos uma empresa séria e responsável com produtos inovadores e tecnológicos. 
             Oferecemos serviço totalmente personalizado para o que você desejar.
           </p>
@@ -85,7 +82,7 @@ const Hero = React.memo(() => {
             <Button 
               variant="outline"
               size="lg" 
-              className="border-white/60 text-white bg-white/10 hover:bg-white hover:text-arte-blue-royal font-semibold px-8 py-4 text-lg backdrop-blur-sm transition-all hover:scale-105 will-change-transform"
+              className="border-white/80 text-white bg-black/20 hover:bg-white hover:text-arte-blue-royal font-semibold px-8 py-4 text-lg backdrop-blur-sm transition-all hover:scale-105 will-change-transform"
               onClick={() => scrollToSection('produtos')}
             >
               Ver Produtos
@@ -96,11 +93,11 @@ const Hero = React.memo(() => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in">
             {features.map((feature, index) => (
               <div key={index} className="text-center">
-                <div className="bg-white/10 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 will-change-transform">
+                <div className="bg-black/20 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 will-change-transform">
                   <feature.icon className="w-8 h-8" />
                 </div>
-                <h3 className="font-semibold mb-2">{feature.title}</h3>
-                <p className="text-blue-100 text-sm">{feature.description}</p>
+                <h3 className="font-semibold mb-2 text-shadow-md">{feature.title}</h3>
+                <p className="text-blue-100 text-sm text-shadow-sm">{feature.description}</p>
               </div>
             ))}
           </div>
