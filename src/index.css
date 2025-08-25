@@ -77,16 +77,23 @@
 
   body {
     @apply bg-background text-foreground font-sans;
+    overflow-x: hidden;
   }
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   /* Performance optimizations */
   * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Prevent horizontal overflow */
+  .container {
+    @apply max-w-full;
   }
 }
 
@@ -142,6 +149,16 @@
   .text-shadow-lg {
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
   }
+
+  /* Responsive utilities */
+  .responsive-container {
+    @apply w-full max-w-full px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Prevent content overflow */
+  .prevent-overflow {
+    @apply overflow-hidden max-w-full;
+  }
 }
 
 @keyframes float {
@@ -173,18 +190,18 @@
   }
 }
 
-/* Estilos para WhatsApp button */
+/* Estilos para WhatsApp button - Responsivo */
 .whatsapp-float {
   position: fixed;
-  width: 60px;
-  height: 60px;
-  bottom: 40px;
-  right: 40px;
+  width: 50px;
+  height: 50px;
+  bottom: 20px;
+  right: 20px;
   background-color: #25D366;
   color: white;
   border-radius: 50px;
   text-align: center;
-  font-size: 30px;
+  font-size: 24px;
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.15);
   z-index: 1000;
   transition: all 0.3s ease;
@@ -200,14 +217,24 @@
   box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.25);
 }
 
-/* Responsivo para mobile */
-@media (max-width: 768px) {
+/* Responsivo para diferentes tamanhos */
+@media (min-width: 640px) {
   .whatsapp-float {
-    width: 50px;
-    height: 50px;
-    bottom: 20px;
-    right: 20px;
-    font-size: 24px;
+    width: 55px;
+    height: 55px;
+    bottom: 30px;
+    right: 30px;
+    font-size: 26px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .whatsapp-float {
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    font-size: 30px;
   }
 }
 
@@ -220,5 +247,24 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Responsive breakpoints optimization */
+@media (max-width: 640px) {
+  .container {
+    @apply px-4;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container {
+    @apply px-6;
+  }
+}
+
+@media (min-width: 1025px) {
+  .container {
+    @apply px-8;
   }
 }
