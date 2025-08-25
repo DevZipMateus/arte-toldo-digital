@@ -5,28 +5,6 @@ import { Button } from '@/components/ui/button';
 
 const Header = React.memo(() => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  // Debounce scroll handler para melhor performance
-  const handleScroll = useCallback(() => {
-    const scrolled = window.scrollY > 20;
-    setIsScrolled(scrolled);
-  }, []);
-
-  useEffect(() => {
-    // Debounce implementation
-    let timeoutId: NodeJS.Timeout;
-    const debouncedHandleScroll = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(handleScroll, 10);
-    };
-
-    window.addEventListener('scroll', debouncedHandleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', debouncedHandleScroll);
-      clearTimeout(timeoutId);
-    };
-  }, [handleScroll]);
 
   const scrollToSection = useCallback((sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -42,26 +20,6 @@ const Header = React.memo(() => {
     { label: 'Produtos', id: 'produtos' },
     { label: 'Contato', id: 'contato' }
   ], []);
-
-  const headerClasses = useMemo(() => 
-    `fixed top-10 left-0 right-0 z-50 transition-all duration-300 will-change-transform ${
-      isScrolled 
-        ? 'bg-white/95 backdrop-blur-sm shadow-lg' 
-        : 'bg-transparent'
-    }`, [isScrolled]
-  );
-
-  const logoTextClasses = useMemo(() => 
-    `text-xl font-bold transition-colors ${
-      isScrolled ? 'text-arte-blue-royal' : 'text-white'
-    }`, [isScrolled]
-  );
-
-  const logoSubtextClasses = useMemo(() => 
-    `text-sm transition-colors ${
-      isScrolled ? 'text-arte-gray' : 'text-white/80'
-    }`, [isScrolled]
-  );
 
   return (
     <>
@@ -91,7 +49,7 @@ const Header = React.memo(() => {
       </div>
 
       {/* Main Header */}
-      <header className={headerClasses}>
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-lg will-change-transform">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-4">
             {/* Logo */}
@@ -102,10 +60,10 @@ const Header = React.memo(() => {
                 className="h-12 w-auto will-change-transform"
               />
               <div className="hidden md:block">
-                <h1 className={logoTextClasses}>
+                <h1 className="text-xl font-bold text-arte-blue-royal">
                   Arte Toldo
                 </h1>
-                <p className={logoSubtextClasses}>
+                <p className="text-sm text-arte-gray">
                   Um legado em tendas e toldos
                 </p>
               </div>
@@ -117,9 +75,7 @@ const Header = React.memo(() => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`font-medium transition-colors hover:text-arte-blue-light ${
-                    isScrolled ? 'text-arte-blue-royal' : 'text-white'
-                  }`}
+                  className="font-medium text-arte-blue-royal hover:text-arte-blue-light transition-colors"
                 >
                   {item.label}
                 </button>
@@ -130,11 +86,7 @@ const Header = React.memo(() => {
             <div className="hidden md:block">
               <Button 
                 variant="outline"
-                className={`border-2 font-semibold transition-all hover:scale-105 will-change-transform ${
-                  isScrolled 
-                    ? 'border-arte-blue-royal text-arte-blue-royal bg-white/10 hover:bg-arte-blue-royal hover:text-white' 
-                    : 'border-white/60 text-white bg-white/10 hover:bg-white hover:text-arte-blue-royal'
-                }`}
+                className="border-2 border-arte-blue-royal text-arte-blue-royal bg-white/10 hover:bg-arte-blue-royal hover:text-white font-semibold transition-all hover:scale-105 will-change-transform"
                 onClick={() => scrollToSection('contato')}
               >
                 Orçamento Grátis
@@ -145,9 +97,7 @@ const Header = React.memo(() => {
             <Button
               variant="ghost"
               size="icon"
-              className={`lg:hidden ${
-                isScrolled ? 'text-arte-blue-royal' : 'text-white'
-              }`}
+              className="lg:hidden text-arte-blue-royal"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
