@@ -92,18 +92,18 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* Social Media */}
+            {/* Social Media - Improved Mobile Layout */}
             <Card className="p-6 border-0 arte-shadow-soft">
               <h3 className="font-bold text-arte-blue-royal mb-4 flex items-center gap-2">
                 <MessageCircle className="w-5 h-5" />
                 Siga-nos nas redes sociais
               </h3>
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 {socialLinks.map((social, index) => (
                   <Button
                     key={index}
                     variant="outline"
-                    className="flex items-center gap-2 border-arte-blue-royal text-arte-blue-royal hover:bg-arte-blue-royal hover:text-white"
+                    className="flex items-center gap-3 p-4 border-arte-blue-royal text-arte-blue-royal hover:bg-arte-blue-royal hover:text-white w-full sm:w-auto justify-start sm:justify-center"
                     onClick={() => window.open(social.link, '_blank')}
                   >
                     {social.icon}
@@ -117,30 +117,30 @@ const Contact = () => {
             </Card>
           </div>
 
-          {/* CTA Card */}
+          {/* CTA Card - Improved Colors */}
           <div className="space-y-6">
             <Card className="p-8 text-center border-0 arte-shadow-strong bg-arte-gradient-primary text-white">
               <div className="mb-6">
-                <MessageCircle className="w-16 h-16 mx-auto mb-4 opacity-90" />
-                <h3 className="text-2xl font-bold mb-2">Orçamento Grátis</h3>
-                <p className="text-blue-100">
+                <MessageCircle className="w-16 h-16 mx-auto mb-4 text-white" />
+                <h3 className="text-2xl font-bold mb-2 text-white">Orçamento Grátis</h3>
+                <p className="text-white/90">
                   Nosso consultor vai até você para apresentar as melhores soluções
                 </p>
               </div>
               
               <Button 
                 size="lg"
-                className="w-full bg-white text-arte-blue-royal hover:bg-blue-50 font-semibold mb-4"
+                className="w-full bg-white text-arte-blue-royal hover:bg-white/90 hover:text-arte-blue-navy font-semibold mb-4 transition-all duration-200"
                 onClick={() => window.open('https://wa.me/5569993067833?text=Olá! Gostaria de solicitar um orçamento para toldo.', '_blank')}
               >
-                <MessageCircle className="w-5 h-5 mr-2" />
+                <MessageCircle className="w-5 h-5 mr-2 text-arte-blue-royal" />
                 WhatsApp
               </Button>
               
               <Button 
                 variant="outline" 
                 size="lg"
-                className="w-full border-white/60 text-white bg-white/10 hover:bg-white hover:text-arte-blue-royal"
+                className="w-full border-2 border-white text-white bg-transparent hover:bg-white hover:text-arte-blue-royal transition-all duration-200"
                 onClick={() => window.open('tel:+5569993067833', '_blank')}
               >
                 <Phone className="w-5 h-5 mr-2" />
