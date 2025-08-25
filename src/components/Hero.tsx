@@ -31,8 +31,16 @@ const Hero = React.memo(() => {
 
   return (
     <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background com gradiente */}
-      <div className="absolute inset-0 arte-gradient-primary will-change-transform"></div>
+      {/* Background image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
+        style={{
+          backgroundImage: `url('/lovable-uploads/f8931bbc-c9bf-4630-bf1f-918b7f077936.png')`
+        }}
+      ></div>
+      
+      {/* Overlay gradient */}
+      <div className="absolute inset-0 arte-gradient-overlay will-change-transform"></div>
       
       {/* Pattern overlay */}
       <div className="absolute inset-0 opacity-10">
