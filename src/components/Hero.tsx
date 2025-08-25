@@ -54,10 +54,10 @@ const Hero = React.memo(() => {
             <span className="text-sm font-medium">Mais de 20 anos de experiência</span>
           </div>
 
-          {/* Main Heading - with text shadow for better readability */}
+          {/* Main Heading - removed gradient from "tendas e toldos" to fix blur */}
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight animate-slide-up text-shadow-lg">
             Um legado em
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200">
+            <span className="block text-white">
               tendas e toldos
             </span>
           </h1>
