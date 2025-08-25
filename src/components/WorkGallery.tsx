@@ -49,6 +49,18 @@ const WorkGallery = () => {
     {
       src: "/lovable-uploads/fdceb9b1-28bd-4783-acbe-bb44770bd811.png",
       alt: "Toldo retrátil moderno instalado"
+    },
+    {
+      src: "/lovable-uploads/95aed9f6-52fd-4127-a7dd-d8f5f2f28027.png",
+      alt: "Toldo retrátil lateral instalado em área externa"
+    },
+    {
+      src: "/lovable-uploads/3a4b91a3-6285-4413-b90a-adca7bccf25c.png",
+      alt: "Cortinas laterais para varanda com estrutura em alvenaria"
+    },
+    {
+      src: "/lovable-uploads/763c986a-ba23-409b-a5b4-198dc3d8cbd3.png",
+      alt: "Cobertura metálica para garagem com estrutura robusta"
     }
   ];
 
