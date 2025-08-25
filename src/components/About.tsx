@@ -75,15 +75,22 @@ const About = () => {
             </div>
           </div>
 
-          {/* Image placeholder */}
+          {/* Image with background */}
           <div className="relative">
-            <div className="bg-arte-blue-royal/10 rounded-2xl aspect-square flex items-center justify-center">
-              <div className="text-center p-8">
-                <div className="w-24 h-24 bg-arte-blue-royal/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div 
+              className="rounded-2xl aspect-square flex items-center justify-center bg-cover bg-center bg-no-repeat relative overflow-hidden"
+              style={{ backgroundImage: "url('/lovable-uploads/c6723a03-905d-4365-b5bf-d619e2175619.png')" }}
+            >
+              {/* Overlay for better text visibility */}
+              <div className="absolute inset-0 bg-arte-blue-royal/30 backdrop-blur-[1px]"></div>
+              
+              {/* Content over the image */}
+              <div className="text-center p-8 relative z-10">
+                <div className="w-24 h-24 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <Users className="w-12 h-12 text-arte-blue-royal" />
                 </div>
-                <h4 className="text-xl font-bold text-arte-blue-royal mb-2">20+ Anos</h4>
-                <p className="text-arte-gray">de experiência no mercado</p>
+                <h4 className="text-xl font-bold text-white mb-2 text-shadow-md">20+ Anos</h4>
+                <p className="text-white/90 text-shadow-sm">de experiência no mercado</p>
               </div>
             </div>
             
