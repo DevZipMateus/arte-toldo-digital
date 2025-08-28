@@ -1,9 +1,29 @@
 
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Shield, Award, Clock, ArrowRight } from 'lucide-react';
 
 const Hero = React.memo(() => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  const backgroundImages = useMemo(() => [
+    '/lovable-uploads/f8931bbc-c9bf-4630-bf1f-918b7f077936.png',
+    '/lovable-uploads/b57419fb-9f55-4d7b-aac5-3a4714409270.png',
+    '/lovable-uploads/b50a47d5-ac2a-4758-a950-83ea9498c293.png',
+    '/lovable-uploads/6576fd76-e1f1-41f1-b90d-9e80ba9423d7.png',
+    '/lovable-uploads/626b025d-4ab9-4ed8-bc5f-56f8ba335441.png'
+  ], []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === backgroundImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [backgroundImages.length]);
+
   const scrollToSection = useCallback((sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -31,13 +51,20 @@ const Hero = React.memo(() => {
 
   return (
     <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
-        style={{
-          backgroundImage: `url('/lovable-uploads/f8931bbc-c9bf-4630-bf1f-918b7f077936.png')`
-        }}
-      ></div>
+      {/* Background carousel */}
+      <div className="absolute inset-0">
+        {backgroundImages.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
+              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{
+              backgroundImage: `url('${image}')`
+            }}
+          />
+        ))}
+      </div>
       
       {/* Pattern overlay - reduced opacity for better image visibility */}
       <div className="absolute inset-0 opacity-5">
