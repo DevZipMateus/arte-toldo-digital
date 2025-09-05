@@ -85,7 +85,17 @@ const CatalogoPage = () => {
       '/lovable-uploads/toldofixo/passarelapolicarbon/IMG_3452.jpg'
     ],
     'passarela-lona': [
-      '/lovable-uploads/toldofixo/passarelalona/IMG_3442.jpg'
+      '/lovable-uploads/toldofixo/passarelalona/IMG_3442.jpg',
+      '/lovable-uploads/toldofixo/passarelalona/IMG_3443.jpg',
+      '/lovable-uploads/toldofixo/passarelalona/IMG_3444.jpg',
+      '/lovable-uploads/toldofixo/passarelalona/IMG_3445.jpg',
+      '/lovable-uploads/toldofixo/passarelalona/IMG_3446.jpg',
+      '/lovable-uploads/toldofixo/passarelalona/IMG_3447.jpg',
+      '/lovable-uploads/toldofixo/passarelalona/IMG_3448.jpg',
+      '/lovable-uploads/toldofixo/passarelalona/IMG_3449.jpg',
+      '/lovable-uploads/toldofixo/passarelalona/IMG_3450.jpg',
+      '/lovable-uploads/toldofixo/passarelalona/IMG_3451.jpg',
+      '/lovable-uploads/toldofixo/passarelalona/IMG_3452.jpg'
     ],
     'toldo-reto-policarbonato': [
       '/lovable-uploads/toldofixo/retopolicarboneto/IMG_3442.jpg'
