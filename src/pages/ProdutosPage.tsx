@@ -366,21 +366,6 @@ const ProdutosPage = () => {
                                   {product.description}
                                 </p>
 
-                                <div className="mb-4">
-                                  <h5 className="font-semibold text-arte-blue-royal mb-2 text-xs">
-                                    Materiais Disponíveis:
-                                  </h5>
-                                  <div className="flex flex-wrap gap-1">
-                                    {product.materials.slice(0, 2).map((material: string, idx: number) => (
-                                      <MaterialBadge key={idx} material={material} />
-                                    ))}
-                                    {product.materials.length > 2 && (
-                                      <Badge variant="outline" className="text-xs">
-                                        +{product.materials.length - 2}
-                                      </Badge>
-                                    )}
-                                  </div>
-                                </div>
 
                                 <Button 
                                   className="w-full bg-arte-blue-royal hover:bg-arte-blue-navy text-white text-sm py-2" 
