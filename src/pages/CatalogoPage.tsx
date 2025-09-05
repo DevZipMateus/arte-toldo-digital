@@ -59,7 +59,17 @@ const CatalogoPage = () => {
       '/lovable-uploads/toldofixo/fixolona/IMG_3452.jpg'
     ],
     'toldo-lua-lona': [
-      '/lovable-uploads/toldofixo/lualona/IMG_3442.jpg'
+      '/lovable-uploads/toldofixo/lualona/IMG_3442.jpg',
+      '/lovable-uploads/toldofixo/lualona/IMG_3443.jpg',
+      '/lovable-uploads/toldofixo/lualona/IMG_3444.jpg',
+      '/lovable-uploads/toldofixo/lualona/IMG_3445.jpg',
+      '/lovable-uploads/toldofixo/lualona/IMG_3446.jpg',
+      '/lovable-uploads/toldofixo/lualona/IMG_3447.jpg',
+      '/lovable-uploads/toldofixo/lualona/IMG_3448.jpg',
+      '/lovable-uploads/toldofixo/lualona/IMG_3449.jpg',
+      '/lovable-uploads/toldofixo/lualona/IMG_3450.jpg',
+      '/lovable-uploads/toldofixo/lualona/IMG_3451.jpg',
+      '/lovable-uploads/toldofixo/lualona/IMG_3452.jpg'
     ],
     'passarela-policarbonato': [
       '/lovable-uploads/toldofixo/passarelapolicarbon/IMG_3442.jpg'
