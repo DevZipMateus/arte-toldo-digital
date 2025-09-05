@@ -280,7 +280,7 @@ const ProdutosPage = () => {
             <nav className="flex items-center space-x-2 text-sm text-muted-foreground">
               <Link to="/" className="hover:text-primary">Home</Link>
               <span>/</span>
-              <span className="text-primary font-medium">Produtos</span>
+              <span className="text-primary font-medium">Catálogo</span>
             </nav>
           </div>
         </div>
@@ -295,7 +295,7 @@ const ProdutosPage = () => {
               </Button>
             </Link>
             <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-arte-blue-royal to-arte-blue-navy bg-clip-text text-transparent">
-              Nossos Produtos
+              Nosso Catálogo
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Descubra nossa ampla linha de produtos para proteção solar e cobertura, 

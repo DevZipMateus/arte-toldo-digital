@@ -18,8 +18,8 @@ const Header = React.memo(() => {
   const navigationItems = useMemo(() => [
     { label: 'Início', id: 'inicio', type: 'scroll' },
     { label: 'Sobre', id: 'sobre', type: 'scroll' },
-    { label: 'Produtos', id: 'produtos', type: 'scroll' },
-    { label: 'Ver Todos os Produtos', id: '/produtos', type: 'link' },
+    { label: 'Catálogo', id: 'produtos', type: 'scroll' },
+    { label: 'Ver Catálogo Completo', id: '/produtos', type: 'link' },
     { label: 'Contato', id: 'contato', type: 'scroll' }
   ], []);
 
