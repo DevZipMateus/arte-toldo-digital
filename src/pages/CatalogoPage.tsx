@@ -20,7 +20,17 @@ const CatalogoPage = () => {
   const imageData: ImageData = {
     // Subcategorias de Toldo Fixo - usando imagens das pastas reais
     'toldo-bola': [
-      '/lovable-uploads/toldofixo/bola/IMG_3442.jpg'
+      '/lovable-uploads/toldofixo/bola/IMG_3647.jpg',
+      '/lovable-uploads/toldofixo/bola/IMG_3648.jpg',
+      '/lovable-uploads/toldofixo/bola/IMG_3649.jpg',
+      '/lovable-uploads/toldofixo/bola/IMG_3650.jpg',
+      '/lovable-uploads/toldofixo/bola/IMG_3651.jpg',
+      '/lovable-uploads/toldofixo/bola/IMG_3652.jpg',
+      '/lovable-uploads/toldofixo/bola/IMG_3653.jpg',
+      '/lovable-uploads/toldofixo/bola/IMG_3654.jpg',
+      '/lovable-uploads/toldofixo/bola/IMG_3655.jpg',
+      '/lovable-uploads/toldofixo/bola/IMG_3656.jpg',
+      '/lovable-uploads/toldofixo/bola/IMG_3657.jpg'
     ],
     'toldo-curvo-lona': [
       '/lovable-uploads/toldofixo/curvolona/IMG_3442.jpg'
