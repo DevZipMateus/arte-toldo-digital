@@ -180,7 +180,17 @@ const CatalogoPage = () => {
       '/lovable-uploads/garagenstelha/IMG_3452.jpg'
     ],
     'modelo-francis': [
-      '/lovable-uploads/modeloFRANCIS/IMG_3442.jpg'
+      '/lovable-uploads/modeloFRANCIS/IMG_3442.jpg',
+      '/lovable-uploads/modeloFRANCIS/IMG_3443.jpg',
+      '/lovable-uploads/modeloFRANCIS/IMG_3444.jpg',
+      '/lovable-uploads/modeloFRANCIS/IMG_3445.jpg',
+      '/lovable-uploads/modeloFRANCIS/IMG_3446.jpg',
+      '/lovable-uploads/modeloFRANCIS/IMG_3447.jpg',
+      '/lovable-uploads/modeloFRANCIS/IMG_3448.jpg',
+      '/lovable-uploads/modeloFRANCIS/IMG_3449.jpg',
+      '/lovable-uploads/modeloFRANCIS/IMG_3450.jpg',
+      '/lovable-uploads/modeloFRANCIS/IMG_3451.jpg',
+      '/lovable-uploads/modeloFRANCIS/IMG_3452.jpg'
     ],
     'sombrites': [
       '/lovable-uploads/sombrites/IMG_3442.jpg'
