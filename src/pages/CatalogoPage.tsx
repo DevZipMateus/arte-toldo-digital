@@ -139,7 +139,17 @@ const CatalogoPage = () => {
       '/lovable-uploads/toldoretratil/policarboneto/IMG_3452.jpg'
     ],
     'sanefa': [
-      '/lovable-uploads/toldoretratil/sanefa/IMG_3442.jpg'
+      '/lovable-uploads/toldoretratil/sanefa/IMG_3442.jpg',
+      '/lovable-uploads/toldoretratil/sanefa/IMG_3443.jpg',
+      '/lovable-uploads/toldoretratil/sanefa/IMG_3444.jpg',
+      '/lovable-uploads/toldoretratil/sanefa/IMG_3445.jpg',
+      '/lovable-uploads/toldoretratil/sanefa/IMG_3446.jpg',
+      '/lovable-uploads/toldoretratil/sanefa/IMG_3447.jpg',
+      '/lovable-uploads/toldoretratil/sanefa/IMG_3448.jpg',
+      '/lovable-uploads/toldoretratil/sanefa/IMG_3449.jpg',
+      '/lovable-uploads/toldoretratil/sanefa/IMG_3450.jpg',
+      '/lovable-uploads/toldoretratil/sanefa/IMG_3451.jpg',
+      '/lovable-uploads/toldoretratil/sanefa/IMG_3452.jpg'
     ],
 
     // Categorias diretas - usando imagens das pastas reais
