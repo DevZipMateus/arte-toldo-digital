@@ -46,7 +46,17 @@ const CatalogoPage = () => {
       '/lovable-uploads/toldofixo/curvolona/IMG_3452.jpg'
     ],
     'toldo-fixo-lona': [
-      '/lovable-uploads/toldofixo/fixolona/IMG_3442.jpg'
+      '/lovable-uploads/toldofixo/fixolona/IMG_3442.jpg',
+      '/lovable-uploads/toldofixo/fixolona/IMG_3443.jpg',
+      '/lovable-uploads/toldofixo/fixolona/IMG_3444.jpg',
+      '/lovable-uploads/toldofixo/fixolona/IMG_3445.jpg',
+      '/lovable-uploads/toldofixo/fixolona/IMG_3446.jpg',
+      '/lovable-uploads/toldofixo/fixolona/IMG_3447.jpg',
+      '/lovable-uploads/toldofixo/fixolona/IMG_3448.jpg',
+      '/lovable-uploads/toldofixo/fixolona/IMG_3449.jpg',
+      '/lovable-uploads/toldofixo/fixolona/IMG_3450.jpg',
+      '/lovable-uploads/toldofixo/fixolona/IMG_3451.jpg',
+      '/lovable-uploads/toldofixo/fixolona/IMG_3452.jpg'
     ],
     'toldo-lua-lona': [
       '/lovable-uploads/toldofixo/lualona/IMG_3442.jpg'
