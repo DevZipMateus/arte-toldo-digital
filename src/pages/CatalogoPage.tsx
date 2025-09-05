@@ -206,7 +206,17 @@ const CatalogoPage = () => {
       '/lovable-uploads/sombrites/IMG_3452.jpg'
     ],
     'tendas': [
-      '/lovable-uploads/tendas/IMG_3442.jpg'
+      '/lovable-uploads/tendas/IMG_3442.jpg',
+      '/lovable-uploads/tendas/IMG_3443.jpg',
+      '/lovable-uploads/tendas/IMG_3444.jpg',
+      '/lovable-uploads/tendas/IMG_3445.jpg',
+      '/lovable-uploads/tendas/IMG_3446.jpg',
+      '/lovable-uploads/tendas/IMG_3447.jpg',
+      '/lovable-uploads/tendas/IMG_3448.jpg',
+      '/lovable-uploads/tendas/IMG_3449.jpg',
+      '/lovable-uploads/tendas/IMG_3450.jpg',
+      '/lovable-uploads/tendas/IMG_3451.jpg',
+      '/lovable-uploads/tendas/IMG_3452.jpg'
     ],
   };
 
