@@ -354,11 +354,6 @@ const ProdutosPage = () => {
                                     <h4 className="font-bold text-sm text-arte-blue-royal truncate">
                                       {product.name}
                                     </h4>
-                                    {product.highlight && (
-                                      <Badge variant="secondary" className="text-xs mt-1">
-                                        Mais Popular
-                                      </Badge>
-                                    )}
                                   </div>
                                 </div>
 
