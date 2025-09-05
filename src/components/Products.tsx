@@ -84,7 +84,10 @@ const Products = () => {
               </p>
             </div>
             
-            <Link to="/catalog">
+            <Link 
+              to="/catalog" 
+              onClick={() => console.log('Navegando para /catalog')}
+            >
               <Button 
                 size="lg" 
                 className="relative text-white font-bold px-12 py-6 bg-gradient-to-r from-arte-blue-royal via-arte-blue-navy to-arte-blue-royal bg-size-200 hover:bg-pos-100 text-xl group transition-all duration-500 hover:scale-110 shadow-2xl hover:shadow-arte-blue-royal/50 animate-pulse hover:animate-none border-2 border-white/30 hover:border-white/60 backdrop-blur-sm"
