@@ -21,76 +21,60 @@ const CatalogoPage = () => {
     // Subcategorias de Toldo Fixo
     'toldo-bola': [
       '/lovable-uploads/toldofixo/bola/1.jpg',
-      '/lovable-uploads/toldofixo/bola/2.jpg',
-      '/lovable-uploads/toldofixo/bola/3.jpg'
+      '/lovable-uploads/toldofixo/bola/2.jpg'
     ],
     'toldo-curvo-lona': [
-      '/lovable-uploads/toldofixo/curvolona/1.jpg',
-      '/lovable-uploads/toldofixo/curvolona/2.jpg'
+      '/lovable-uploads/toldofixo/curvolona/1.jpg'
     ],
     'toldo-fixo-lona': [
       '/lovable-uploads/toldofixo/fixolona/IMG_3442.jpg',
-      '/lovable-uploads/toldofixo/fixolona/2.jpg',
-      '/lovable-uploads/toldofixo/fixolona/3.jpg'
+      '/lovable-uploads/toldofixo/fixolona/IMG_8411.jpg'
     ],
     'toldo-lua-lona': [
-      '/lovable-uploads/toldofixo/lualona/1.jpg',
-      '/lovable-uploads/toldofixo/lualona/2.jpg'
+      '/lovable-uploads/toldofixo/lualona/IMG_3096.jpg'
     ],
     'passarela-policarbonato': [
-      '/lovable-uploads/toldofixo/passarelapolicarbon/1.jpg',
-      '/lovable-uploads/toldofixo/passarelapolicarbon/2.jpg'
+      '/lovable-uploads/toldofixo/passarelapolicarbon/IMG_3031.jpg'
     ],
     'passarela-lona': [
-      '/lovable-uploads/toldofixo/passarelalona/1.jpg',
-      '/lovable-uploads/toldofixo/passarelalona/2.jpg'
+      '/lovable-uploads/toldofixo/passarelalona/1.jpg'
     ],
     'toldo-reto-policarbonato': [
-      '/lovable-uploads/toldofixo/retopolicarboneto/1.jpg',
-      '/lovable-uploads/toldofixo/retopolicarboneto/2.jpg'
+      '/lovable-uploads/toldofixo/retopolicarboneto/IMG_2634.jpg',
+      '/lovable-uploads/toldofixo/retopolicarboneto/IMG_3439.jpg',
+      '/lovable-uploads/toldofixo/retopolicarboneto/IMG_4445.jpg'
     ],
     
-    // Subcategorias de Toldo Retrátil - usando as pastas do GitHub
+    // Subcategorias de Toldo Retrátil
     'aluminio': [
       '/lovable-uploads/toldoretratil/aluminio/1.jpg',
-      '/lovable-uploads/toldoretratil/aluminio/2.jpg',
-      '/lovable-uploads/toldoretratil/aluminio/3.jpg',
-      '/lovable-uploads/toldoretratil/aluminio/4.jpg'
+      '/lovable-uploads/toldoretratil/aluminio/2.jpg'
     ],
     'policarbonato': [
       '/lovable-uploads/toldoretratil/policarboneto/1.jpg',
-      '/lovable-uploads/toldoretratil/policarboneto/2.jpg',
-      '/lovable-uploads/toldoretratil/policarboneto/3.jpg'
+      '/lovable-uploads/toldoretratil/policarboneto/2.jpg'
     ],
     'sanefa': [
-      '/lovable-uploads/toldoretratil/sanefa/1.jpg',
-      '/lovable-uploads/toldoretratil/sanefa/2.jpg',
-      '/lovable-uploads/toldoretratil/sanefa/3.jpg',
-      '/lovable-uploads/toldoretratil/sanefa/4.jpg',
-      '/lovable-uploads/toldoretratil/sanefa/5.jpg'
+      '/lovable-uploads/toldoretratil/sanefa/PHOTO-2022-11-19-11-41-22(1).jpg',
+      '/lovable-uploads/toldoretratil/sanefa/PHOTO-2022-11-19-11-41-22(3).jpg',
+      '/lovable-uploads/toldoretratil/sanefa/PHOTO-2022-11-19-11-41-22(5).jpg'
     ],
 
-    // Categorias diretas (sem subcategoria)
+    // Categorias diretas
     'cobertura-inversor-solar': [
-      '/lovable-uploads/outros/inversor/1.jpg',
-      '/lovable-uploads/outros/inversor/2.jpg'
+      '/lovable-uploads/coberturaparainversorsolar/IMG_3080.jpg'
     ],
     'garagem-telhas': [
-      '/lovable-uploads/outros/garagem/1.jpg',
-      '/lovable-uploads/outros/garagem/2.jpg'
+      '/lovable-uploads/garagenstelha/IMG_7754.jpg'
     ],
     'modelo-francis': [
-      '/lovable-uploads/outros/francis/1.jpg',
-      '/lovable-uploads/outros/francis/2.jpg'
+      '/lovable-uploads/modeloFRANCIS/1.jpg'
     ],
     'sombrites': [
-      '/lovable-uploads/outros/sombrites/1.jpg',
-      '/lovable-uploads/outros/sombrites/2.jpg'
+      '/lovable-uploads/sombrites/1.jpg'
     ],
     'tendas': [
-      '/lovable-uploads/outros/tendas/1.jpg',
-      '/lovable-uploads/outros/tendas/2.jpg',
-      '/lovable-uploads/outros/tendas/3.jpg'
+      '/lovable-uploads/tendas/1.jpg'
     ],
   };
 
