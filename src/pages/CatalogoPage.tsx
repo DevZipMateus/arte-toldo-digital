@@ -167,7 +167,17 @@ const CatalogoPage = () => {
       '/lovable-uploads/coberturaparainversorsolar/IMG_3452.jpg'
     ],
     'garagem-telhas': [
-      '/lovable-uploads/garagenstelha/IMG_3442.jpg'
+      '/lovable-uploads/garagenstelha/IMG_3442.jpg',
+      '/lovable-uploads/garagenstelha/IMG_3443.jpg',
+      '/lovable-uploads/garagenstelha/IMG_3444.jpg',
+      '/lovable-uploads/garagenstelha/IMG_3445.jpg',
+      '/lovable-uploads/garagenstelha/IMG_3446.jpg',
+      '/lovable-uploads/garagenstelha/IMG_3447.jpg',
+      '/lovable-uploads/garagenstelha/IMG_3448.jpg',
+      '/lovable-uploads/garagenstelha/IMG_3449.jpg',
+      '/lovable-uploads/garagenstelha/IMG_3450.jpg',
+      '/lovable-uploads/garagenstelha/IMG_3451.jpg',
+      '/lovable-uploads/garagenstelha/IMG_3452.jpg'
     ],
     'modelo-francis': [
       '/lovable-uploads/modeloFRANCIS/IMG_3442.jpg'
