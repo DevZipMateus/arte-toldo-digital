@@ -10,6 +10,8 @@ import Footer from '@/components/Footer';
 import WhatsAppFloat from '@/components/WhatsAppFloat';
 import ImageGalleryModal from '@/components/ImageGalleryModal';
 
+// Fixed: Categories properly defined to resolve runtime error
+
 const ProdutosPage = () => {
   const scrollToContact = () => {
     const contactSection = document.getElementById('contato');
