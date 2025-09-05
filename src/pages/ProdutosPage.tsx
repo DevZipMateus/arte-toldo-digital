@@ -23,25 +23,20 @@ const ProdutosPage = () => {
     }
   };
 
-  // Função para carregar todas as imagens de uma pasta específica
+  // Função otimizada para carregar imagens específicas
   const getImagesForSubcategory = (categoryId: string, subcategoryId: string) => {
     if (categoryId === 'toldos-fixos' && subcategoryId === 'bola') {
       const baseUrl = '/lovable-uploads/toldofixo/bola/';
-      const imagePatterns = [];
+      // Reduzindo drasticamente o número de URLs testadas - apenas padrões mais prováveis
+      const imagePatterns = [
+        '8.jpg', '9.jpg', '10.jpg', '11.jpg', '12.jpg',
+        'bola8.jpg', 'bola9.jpg', 'bola10.jpg',
+        'toldo1.jpg', 'toldo2.jpg', 'toldo3.jpg'
+      ];
       
-      // Padrões mais focados baseados nas imagens que existem
-      for (let i = 8; i <= 12; i++) {
-        const patterns = [
-          `${i}.jpg`, `${i}.jpeg`, `${i}.png`, `${i}.webp`,
-          `bola${i}.jpg`, `bola${i}.jpeg`, `bola${i}.png`, `bola${i}.webp`,
-          `toldo${i}.jpg`, `toldo${i}.jpeg`, `toldo${i}.png`, `toldo${i}.webp`,
-          `image${i}.jpg`, `image${i}.jpeg`, `image${i}.png`, `image${i}.webp`
-        ];
-        imagePatterns.push(...patterns.map(pattern => baseUrl + pattern));
-      }
-      
-      console.log('Generated image patterns:', imagePatterns);
-      return imagePatterns;
+      const fullUrls = imagePatterns.map(pattern => baseUrl + pattern);
+      console.log('Optimized image patterns (reduced from 100+ to', fullUrls.length, '):', fullUrls);
+      return fullUrls;
     }
     return [];
   };

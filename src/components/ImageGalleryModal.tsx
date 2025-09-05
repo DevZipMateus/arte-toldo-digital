@@ -15,40 +15,59 @@ const ImageGalleryModal = ({ trigger, title, images }: ImageGalleryModalProps) =
   const [validImages, setValidImages] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Carrega e valida as imagens quando o modal abre
+  // Carrega e valida as imagens em lotes otimizados
   React.useEffect(() => {
     if (isOpen && images.length > 0) {
       setLoading(true);
-      console.log('Validating images:', images);
+      console.log('Validating images in batches:', images.length, 'total');
       
-      const checkImages = async () => {
+      const checkImagesInBatches = async () => {
         const validImageUrls: string[] = [];
+        const batchSize = 3; // Reduzido para 3 por lote
+        const maxImages = Math.min(images.length, 15); // Máximo 15 imagens
         
-        // Validar até 10 imagens por vez para não sobrecarregar
-        const imagesToCheck = images.slice(0, 50);
-        
-        const promises = imagesToCheck.map(async (imageUrl) => {
-          try {
-            const response = await fetch(imageUrl, { method: 'HEAD' });
-            if (response.ok) {
-              return imageUrl;
+        for (let i = 0; i < maxImages; i += batchSize) {
+          const batch = images.slice(i, i + batchSize);
+          console.log(`Checking batch ${Math.floor(i/batchSize) + 1}:`, batch);
+          
+          const promises = batch.map(async (imageUrl) => {
+            try {
+              const controller = new AbortController();
+              const timeoutId = setTimeout(() => controller.abort(), 2000); // 2s timeout
+              
+              const response = await fetch(imageUrl, { 
+                method: 'HEAD',
+                signal: controller.signal
+              });
+              clearTimeout(timeoutId);
+              
+              if (response.ok) {
+                console.log('✓ Valid image:', imageUrl);
+                return imageUrl;
+              }
+            } catch (error) {
+              console.log('✗ Image failed:', imageUrl);
             }
-          } catch (error) {
-            console.log('Image not found:', imageUrl);
+            return null;
+          });
+          
+          const results = await Promise.all(promises);
+          const validBatch = results.filter((url): url is string => url !== null);
+          validImageUrls.push(...validBatch);
+          
+          // Delay entre lotes para não sobrecarregar
+          if (i + batchSize < maxImages) {
+            await new Promise(resolve => setTimeout(resolve, 200));
           }
-          return null;
-        });
+        }
         
-        const results = await Promise.all(promises);
-        const valid = results.filter((url): url is string => url !== null);
-        
-        console.log('Valid images found:', valid.length);
-        setValidImages(valid);
+        console.log('Final valid images found:', validImageUrls.length);
+        setValidImages(validImageUrls);
         setLoading(false);
         setCurrentImageIndex(0);
       };
       
-      checkImages();
+      checkImagesInBatches();
     }
   }, [isOpen, images]);
 
@@ -79,9 +98,12 @@ const ImageGalleryModal = ({ trigger, title, images }: ImageGalleryModalProps) =
         
         <div className="flex-1 flex flex-col items-center justify-center p-6 pt-2">
           {loading ? (
-            <div className="flex items-center justify-center h-64">
+            <div className="flex flex-col items-center justify-center h-64 space-y-4">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-arte-blue-royal"></div>
-              <span className="ml-2 text-muted-foreground">Carregando imagens...</span>
+              <div className="text-center">
+                <span className="text-muted-foreground">Carregando imagens...</span>
+                <p className="text-xs text-muted-foreground mt-1">Validando disponibilidade das imagens</p>
+              </div>
             </div>
           ) : validImages.length === 0 ? (
             <div className="flex items-center justify-center h-64 text-muted-foreground">
@@ -123,27 +145,37 @@ const ImageGalleryModal = ({ trigger, title, images }: ImageGalleryModalProps) =
               </div>
               
               {validImages.length > 1 && (
-                <div className="flex gap-2 mt-4 max-w-full overflow-x-auto pb-2">
-                  {validImages.map((image, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentImageIndex(index)}
-                      className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
-                        index === currentImageIndex 
-                          ? 'border-arte-blue-royal shadow-lg' 
-                          : 'border-gray-200 hover:border-arte-blue-royal/50'
-                      }`}
-                    >
-                      <img
-                        src={image}
-                        alt={`Miniatura ${index + 1}`}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          e.currentTarget.src = '/placeholder.svg';
-                        }}
-                      />
-                    </button>
-                  ))}
+                <div className="w-full mt-4">
+                  <div className="flex gap-2 overflow-x-auto pb-2 max-w-full scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+                    <div className="flex gap-2 min-w-max px-2">
+                      {validImages.slice(0, 10).map((image, index) => (
+                        <button
+                          key={index}
+                          onClick={() => setCurrentImageIndex(index)}
+                          className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
+                            index === currentImageIndex 
+                              ? 'border-arte-blue-royal shadow-lg scale-105' 
+                              : 'border-gray-200 hover:border-arte-blue-royal/50'
+                          }`}
+                        >
+                          <img
+                            src={image}
+                            alt={`Miniatura ${index + 1}`}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                            onError={(e) => {
+                              e.currentTarget.src = '/placeholder.svg';
+                            }}
+                          />
+                        </button>
+                      ))}
+                      {validImages.length > 10 && (
+                        <div className="flex-shrink-0 w-16 h-16 rounded-lg border-2 border-dashed border-gray-300 flex items-center justify-center text-xs text-gray-500">
+                          +{validImages.length - 10}
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
               )}
               
