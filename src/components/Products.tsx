@@ -62,26 +62,53 @@ const Products = () => {
 
         {/* CTA Principal */}
         <div className="text-center">
-          <div className="bg-arte-gradient-primary rounded-2xl p-12 text-white mb-8">
-            <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Eye className="w-10 h-10 text-white" />
+          <div className="relative bg-arte-gradient-primary rounded-2xl p-12 text-white mb-8 overflow-hidden">
+            {/* Efeito de partículas flutuantes */}
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute w-4 h-4 bg-white/20 rounded-full animate-float" style={{top: '20%', left: '10%', animationDelay: '0s'}}></div>
+              <div className="absolute w-3 h-3 bg-white/30 rounded-full animate-float" style={{top: '60%', right: '15%', animationDelay: '1s'}}></div>
+              <div className="absolute w-5 h-5 bg-white/15 rounded-full animate-float" style={{top: '80%', left: '20%', animationDelay: '2s'}}></div>
+              <div className="absolute w-2 h-2 bg-white/40 rounded-full animate-float" style={{top: '30%', right: '25%', animationDelay: '3s'}}></div>
             </div>
-            <h3 className="text-2xl md:text-3xl font-bold mb-4 text-slate-950">
-              Explore Nosso Catálogo Completo
-            </h3>
-            <p className="text-lg mb-8 max-w-2xl mx-auto text-zinc-950">
-              Mais de 20 modelos diferentes de toldos, coberturas e soluções de proteção solar. 
-              Encontre a opção perfeita para seu projeto.
-            </p>
+            
+            <div className="relative z-10">
+              <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
+                <Eye className="w-10 h-10 text-white animate-bounce" />
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-slate-950 animate-fade-in">
+                Explore Nosso Catálogo Completo
+              </h3>
+              <p className="text-lg mb-8 max-w-2xl mx-auto text-zinc-950 animate-fade-in">
+                Mais de 20 modelos diferentes de toldos, coberturas e soluções de proteção solar. 
+                Encontre a opção perfeita para seu projeto.
+              </p>
+            </div>
             
             <Link to="/produtos">
               <Button 
                 size="lg" 
-                className="text-arte-blue-royal font-bold px-8 py-4 bg-white hover:bg-gray-100 text-lg group transition-all duration-300 hover:scale-105"
+                className="relative text-white font-bold px-12 py-6 bg-gradient-to-r from-arte-blue-royal via-arte-blue-navy to-arte-blue-royal bg-size-200 hover:bg-pos-100 text-xl group transition-all duration-500 hover:scale-110 shadow-2xl hover:shadow-arte-blue-royal/50 animate-pulse hover:animate-none border-2 border-white/30 hover:border-white/60 backdrop-blur-sm"
+                style={{
+                  backgroundSize: '200% 200%',
+                  backgroundPosition: '0% 50%',
+                  boxShadow: '0 0 30px rgba(59, 130, 246, 0.5), 0 0 60px rgba(59, 130, 246, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.1)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundPosition = '100% 50%';
+                  e.currentTarget.style.boxShadow = '0 0 40px rgba(59, 130, 246, 0.8), 0 0 80px rgba(59, 130, 246, 0.5), inset 0 0 30px rgba(255, 255, 255, 0.2)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundPosition = '0% 50%';
+                  e.currentTarget.style.boxShadow = '0 0 30px rgba(59, 130, 246, 0.5), 0 0 60px rgba(59, 130, 246, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.1)';
+                }}
               >
-                <Eye className="w-5 h-5 mr-2" />
-                Veja Nosso Catálogo
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                <div className="absolute inset-0 bg-white/10 rounded-md animate-pulse opacity-50"></div>
+                <Eye className="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform duration-300" />
+                <span className="relative z-10">Veja Nosso Catálogo</span>
+                <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-2 group-hover:scale-125 transition-all duration-300" />
+                
+                {/* Efeito de brilho animado */}
+                <div className="absolute inset-0 rounded-md bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
               </Button>
             </Link>
           </div>
