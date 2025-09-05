@@ -21,17 +21,37 @@ const ProdutosPage = () => {
     }
   };
 
-  // Imagens para cada subcategoria
+  // Função para carregar todas as imagens de uma pasta específica
   const getImagesForSubcategory = (categoryId: string, subcategoryId: string) => {
-    const imageMap: { [key: string]: string[] } = {
-      'toldos-fixos-bola': [
-        '/lovable-uploads/toldofixo/bola/image1.jpg',
-        '/lovable-uploads/toldofixo/bola/image2.jpg',
-        '/lovable-uploads/toldofixo/bola/image3.jpg'
-      ]
-      // Adicione mais mapeamentos conforme necessário
-    };
-    return imageMap[`${categoryId}-${subcategoryId}`] || [];
+    if (categoryId === 'toldos-fixos' && subcategoryId === 'bola') {
+      // Lista todas as imagens da pasta toldofixo/bola
+      const bola_images = [];
+      for (let i = 1; i <= 20; i++) {
+        // Tenta diferentes extensões e números
+        ['jpg', 'jpeg', 'png', 'webp'].forEach(ext => {
+          bola_images.push(`/lovable-uploads/toldofixo/bola/image${i}.${ext}`);
+          bola_images.push(`/lovable-uploads/toldofixo/bola/bola${i}.${ext}`);
+          bola_images.push(`/lovable-uploads/toldofixo/bola/toldo${i}.${ext}`);
+          bola_images.push(`/lovable-uploads/toldofixo/bola/${i}.${ext}`);
+        });
+      }
+      
+      // Adiciona nomes comuns de arquivo
+      const commonNames = [
+        'main', 'principal', 'frente', 'lateral', 'detalhe', 'close',
+        'vista1', 'vista2', 'vista3', 'foto1', 'foto2', 'foto3',
+        'exemplo1', 'exemplo2', 'modelo1', 'modelo2'
+      ];
+      
+      commonNames.forEach(name => {
+        ['jpg', 'jpeg', 'png', 'webp'].forEach(ext => {
+          bola_images.push(`/lovable-uploads/toldofixo/bola/${name}.${ext}`);
+        });
+      });
+      
+      return bola_images;
+    }
+    return [];
   };
 
   const MaterialBadge = ({ material }: { material: string }) => {
