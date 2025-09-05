@@ -339,23 +339,12 @@ const Products = () => {
                             </div>
                           </div>
 
-                          <div className="flex gap-2">
-                            <Button 
-                              className="flex-1 bg-arte-blue-royal hover:bg-arte-blue-navy text-white" 
-                              onClick={scrollToContact}
-                            >
-                              Solicitar Orçamento
-                            </Button>
-                            {product.name === 'Toldo Bola' && (
-                              <Button 
-                                variant="outline"
-                                onClick={() => window.location.href = '/produto/toldos-fixos/bola'}
-                                className="flex-shrink-0"
-                              >
-                                Ver Detalhes
-                              </Button>
-                            )}
-                          </div>
+                          <Button 
+                            className="w-full bg-arte-blue-royal hover:bg-arte-blue-navy text-white" 
+                            onClick={scrollToContact}
+                          >
+                            Solicitar Orçamento
+                          </Button>
                         </Card>
                       ))}
                     </div>
