@@ -11,6 +11,116 @@ import Footer from '@/components/Footer';
 import WhatsAppFloat from '@/components/WhatsAppFloat';
 import ProductsSidebar from '@/components/ProductsSidebar';
 
+const scrollToContact = () => {
+  const contactSection = document.getElementById('contato');
+  if (contactSection) {
+    contactSection.scrollIntoView({ behavior: 'smooth' });
+  } else {
+    // Se não estiver na página principal, redirecionar
+    window.location.href = '/#contato';
+  }
+};
+
+// Função para carregar todas as imagens de uma pasta específica
+const getImagesForSubcategory = (categoryId: string, subcategoryId: string) => {
+  if (categoryId === 'toldos-fixos' && subcategoryId === 'bola') {
+    const baseUrl = '/lovable-uploads/toldofixo/bola/';
+    const imagePatterns = [];
+    
+    // Padrões mais focados baseados nas imagens que existem
+    for (let i = 8; i <= 12; i++) {
+      const patterns = [
+        `${i}.jpg`, `${i}.jpeg`, `${i}.png`, `${i}.webp`,
+        `bola${i}.jpg`, `bola${i}.jpeg`, `bola${i}.png`, `bola${i}.webp`,
+        `toldo${i}.jpg`, `toldo${i}.jpeg`, `toldo${i}.png`, `toldo${i}.webp`,
+        `image${i}.jpg`, `image${i}.jpeg`, `image${i}.png`, `image${i}.webp`
+      ];
+      imagePatterns.push(...patterns.map(pattern => baseUrl + pattern));
+    }
+    
+    console.log('Generated image patterns:', imagePatterns);
+    return imagePatterns;
+  }
+  return [];
+};
+
+const MaterialBadge = ({ material }: { material: string }) => {
+  const materialTypes: { [key: string]: 'default' | 'secondary' | 'outline' } = {
+    'Lona vinílica': 'default',
+    'Lona acrílica': 'secondary',
+    'Lona poli light': 'outline',
+    'Policarbonato alveolar 6mm': 'default',
+    'Policarbonato compacto 3mm': 'secondary',
+    'Alumínio': 'outline',
+    'Aço galvanizado': 'default'
+  };
+
+  return (
+    <Badge 
+      variant={materialTypes[material] || 'default'}
+      className="text-xs"
+    >
+      {material}
+    </Badge>
+  );
+};
+
+// Definição das categorias principais
+const categories = [
+  { id: 'toldos-fixos', label: 'Toldos Fixos', icon: <Home className="w-4 h-4" /> },
+  { id: 'toldos-retrateis', label: 'Toldos Retráteis', icon: <Shield className="w-4 h-4" /> },
+  { id: 'solucoes-especiais', label: 'Soluções Especiais', icon: <Star className="w-4 h-4" /> }
+];
+
+// Definição dos tipos de produtos com subcategorias
+const productTypes: { [key: string]: { title: string; description: string; subcategories?: any[] } } = {
+  'toldos-fixos': {
+    title: 'Toldos Fixos',
+    description: 'Soluções permanentes de proteção solar e cobertura para áreas externas.',
+    subcategories: [
+      {
+        id: 'bola',
+        name: 'Toldo Bola',
+        products: [
+          {
+            name: 'Toldo Bola Premium',
+            materials: ['Lona vinílica', 'Estrutura em alumínio'],
+            icon: <Sun className="w-4 h-4" />,
+            description: 'Toldo em formato de bola ideal para grandes áreas, oferece máxima proteção solar e resistência ao vento.',
+            highlight: true
+          },
+          {
+            name: 'Toldo Bola Compacto',
+            materials: ['Lona acrílica', 'Estrutura em aço'],
+            icon: <Shield className="w-4 h-4" />,
+            description: 'Versão compacta do toldo bola, perfeita para espaços menores mantendo toda a funcionalidade.'
+          }
+        ]
+      },
+      {
+        id: 'piramidal',
+        name: 'Toldo Piramidal',
+        products: [
+          {
+            name: 'Toldo Piramidal Standard',
+            materials: ['Lona vinílica', 'Estrutura em alumínio'],
+            icon: <Building2 className="w-4 h-4" />,
+            description: 'Cobertura em formato piramidal, ideal para pátios e áreas centrais.'
+          }
+        ]
+      }
+    ]
+  },
+  'toldos-retrateis': {
+    title: 'Toldos Retráteis',
+    description: 'Flexibilidade total com toldos que se adaptam às suas necessidades.'
+  },
+  'solucoes-especiais': {
+    title: 'Soluções Especiais',
+    description: 'Projetos customizados para necessidades específicas.'
+  }
+};
+
 const ProdutosPage = () => {
   const [activeCategory, setActiveCategory] = useState(categories[0].id);
   const [activeSubcategory, setActiveSubcategory] = useState<string | null>(null);
