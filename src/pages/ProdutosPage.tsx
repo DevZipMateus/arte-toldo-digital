@@ -331,64 +331,71 @@ const ProdutosPage = () => {
                 </div>
 
                 <div className="grid gap-8">
-                  {productTypes[category.id]?.subcategories?.map((subcategory: any) => (
-                    <div key={subcategory.id}>
-                      <h3 className="text-2xl font-semibold mb-6 text-arte-blue-navy">
-                        {subcategory.name}
-                      </h3>
-                      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                        {subcategory.products.map((product: any, index: number) => (
-                          <Card key={index} className="gruppe-card-hover transition-all duration-300 hover:shadow-lg">
-                            <div className="p-6">
-                              <div className="flex items-center gap-3 mb-4">
-                                <div className="w-12 h-12 bg-arte-blue-royal/10 rounded-lg flex items-center justify-center text-arte-blue-royal">
-                                  {product.icon}
+                  {/* Grid 3x3 para subcategorias */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {productTypes[category.id]?.subcategories?.map((subcategory: any) => (
+                      <div key={subcategory.id} className="space-y-4">
+                        <div className="text-center">
+                          <h3 className="text-lg font-semibold mb-4 text-arte-blue-navy bg-arte-blue-royal/5 py-2 px-4 rounded-lg">
+                            {subcategory.name}
+                          </h3>
+                        </div>
+                        
+                        {/* Produtos dentro de cada subcategoria */}
+                        <div className="space-y-4">
+                          {subcategory.products.map((product: any, index: number) => (
+                            <Card key={index} className="gruppe-card-hover transition-all duration-300 hover:shadow-lg h-full">
+                              <div className="p-4">
+                                <div className="flex items-center gap-3 mb-3">
+                                  <div className="w-10 h-10 bg-arte-blue-royal/10 rounded-lg flex items-center justify-center text-arte-blue-royal flex-shrink-0">
+                                    {product.icon}
+                                  </div>
+                                  <div className="min-w-0">
+                                    <h4 className="font-bold text-sm text-arte-blue-royal truncate">
+                                      {product.name}
+                                    </h4>
+                                    {product.highlight && (
+                                      <Badge variant="secondary" className="text-xs mt-1">
+                                        Mais Popular
+                                      </Badge>
+                                    )}
+                                  </div>
                                 </div>
-                                <div>
-                                  <h4 className="font-bold text-lg text-arte-blue-royal">
-                                    {product.name}
-                                  </h4>
-                                  {product.highlight && (
-                                    <Badge variant="secondary" className="text-xs mt-1">
-                                      Mais Popular
-                                    </Badge>
-                                  )}
+
+                                <p className="text-arte-gray mb-4 leading-relaxed text-sm">
+                                  {product.description}
+                                </p>
+
+                                <div className="mb-4">
+                                  <h5 className="font-semibold text-arte-blue-royal mb-2 text-xs">
+                                    Materiais Disponíveis:
+                                  </h5>
+                                  <div className="flex flex-wrap gap-1">
+                                    {product.materials.slice(0, 2).map((material: string, idx: number) => (
+                                      <MaterialBadge key={idx} material={material} />
+                                    ))}
+                                    {product.materials.length > 2 && (
+                                      <Badge variant="outline" className="text-xs">
+                                        +{product.materials.length - 2}
+                                      </Badge>
+                                    )}
+                                  </div>
                                 </div>
+
+                                <Button 
+                                  className="w-full bg-arte-blue-royal hover:bg-arte-blue-navy text-white text-sm py-2" 
+                                  onClick={scrollToContact}
+                                >
+                                  <Phone className="w-3 h-3 mr-2" />
+                                  Solicitar Orçamento
+                                </Button>
                               </div>
-
-                              <p className="text-arte-gray mb-6 leading-relaxed">
-                                {product.description}
-                              </p>
-
-                              <div className="mb-6">
-                                <h5 className="font-semibold text-arte-blue-royal mb-3">
-                                  Materiais Disponíveis:
-                                </h5>
-                                <div className="flex flex-wrap gap-2">
-                                  {product.materials.slice(0, 3).map((material: string, idx: number) => (
-                                    <MaterialBadge key={idx} material={material} />
-                                  ))}
-                                  {product.materials.length > 3 && (
-                                    <Badge variant="outline" className="text-xs">
-                                      +{product.materials.length - 3} mais
-                                    </Badge>
-                                  )}
-                                </div>
-                              </div>
-
-                              <Button 
-                                className="w-full bg-arte-blue-royal hover:bg-arte-blue-navy text-white" 
-                                onClick={scrollToContact}
-                              >
-                                <Phone className="w-4 h-4 mr-2" />
-                                Solicitar Orçamento
-                              </Button>
-                            </div>
-                          </Card>
-                        ))}
+                            </Card>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </TabsContent>
             ))}
