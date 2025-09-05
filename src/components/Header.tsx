@@ -1,19 +1,42 @@
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Phone, Clock, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Header = React.memo(() => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === '/';
 
   const scrollToSection = useCallback((sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (isHomePage) {
+      // Se estamos na página principal, rola para a seção
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        setIsMenuOpen(false);
+      }
+    } else {
+      // Se estamos em outra página, navega para a home com a seção
+      navigate(`/#${sectionId}`);
       setIsMenuOpen(false);
     }
-  }, []);
+  }, [isHomePage, navigate]);
+
+  // Efeito para rolar para seção quando chegamos na home via hash
+  useEffect(() => {
+    if (isHomePage && location.hash) {
+      const sectionId = location.hash.substring(1); // Remove o #
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100); // Pequeno delay para garantir que a página carregou
+    }
+  }, [isHomePage, location.hash]);
 
   const navigationItems = useMemo(() => [
     { label: 'Início', id: 'inicio', type: 'scroll' },
@@ -31,19 +54,21 @@ const Header = React.memo(() => {
           <div className="flex items-center justify-between py-3 sm:py-4">
             {/* Logo */}
             <div className="flex items-center space-x-2 sm:space-x-3 min-w-0">
-              <img 
-                src="/lovable-uploads/05e7ad14-3936-4e92-847f-300a1eeb16da.png" 
-                alt="Arte Toldo - Logo"
-                className="h-8 sm:h-10 lg:h-12 w-auto will-change-transform flex-shrink-0"
-              />
-              <div className="hidden sm:block min-w-0">
-                <h1 className="text-lg sm:text-xl font-bold text-arte-blue-royal truncate">
-                  Arte Toldo
-                </h1>
-                <p className="text-xs sm:text-sm text-arte-gray truncate">
-                  Um legado em tendas e toldos
-                </p>
-              </div>
+              <Link to="/" className="flex items-center space-x-2 sm:space-x-3">
+                <img 
+                  src="/lovable-uploads/05e7ad14-3936-4e92-847f-300a1eeb16da.png" 
+                  alt="Arte Toldo - Logo"
+                  className="h-8 sm:h-10 lg:h-12 w-auto will-change-transform flex-shrink-0"
+                />
+                <div className="hidden sm:block min-w-0">
+                  <h1 className="text-lg sm:text-xl font-bold text-arte-blue-royal truncate">
+                    Arte Toldo
+                  </h1>
+                  <p className="text-xs sm:text-sm text-arte-gray truncate">
+                    Um legado em tendas e toldos
+                  </p>
+                </div>
+              </Link>
             </div>
 
             {/* Desktop Navigation */}
