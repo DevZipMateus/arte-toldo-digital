@@ -16,19 +16,22 @@ const CatalogoPage = () => {
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
   const [currentImages, setCurrentImages] = useState<string[]>([]);
 
-  // Image data with real paths from GitHub folders
+  // Image data com apenas as imagens que realmente existem no projeto
   const imageData: ImageData = {
-    // Subcategorias de Toldo Fixo
+    // Subcategorias de Toldo Fixo - usando apenas imagens que existem
     'toldo-bola': [
-      '/lovable-uploads/toldofixo/bola/1.jpg',
-      '/lovable-uploads/toldofixo/bola/2.jpg'
+      // Estas imagens não existem ainda, usando placeholder
+      'https://via.placeholder.com/300x200.png?text=Toldo+Bola+1',
+      'https://via.placeholder.com/300x200.png?text=Toldo+Bola+2'
     ],
     'toldo-curvo-lona': [
-      '/lovable-uploads/toldofixo/curvolona/1.jpg'
+      'https://via.placeholder.com/300x200.png?text=Toldo+Curvo+1'
     ],
     'toldo-fixo-lona': [
+      // Esta imagem existe no projeto
       '/lovable-uploads/toldofixo/fixolona/IMG_3442.jpg',
-      '/lovable-uploads/toldofixo/fixolona/IMG_8411.jpg'
+      // Placeholder para outras
+      'https://via.placeholder.com/300x200.png?text=Toldo+Fixo+2'
     ],
     'toldo-lua-lona': [
       '/lovable-uploads/toldofixo/lualona/IMG_3096.jpg'
@@ -37,7 +40,7 @@ const CatalogoPage = () => {
       '/lovable-uploads/toldofixo/passarelapolicarbon/IMG_3031.jpg'
     ],
     'passarela-lona': [
-      '/lovable-uploads/toldofixo/passarelalona/1.jpg'
+      'https://via.placeholder.com/300x200.png?text=Passarela+Lona+1'
     ],
     'toldo-reto-policarbonato': [
       '/lovable-uploads/toldofixo/retopolicarboneto/IMG_2634.jpg',
@@ -47,12 +50,12 @@ const CatalogoPage = () => {
     
     // Subcategorias de Toldo Retrátil
     'aluminio': [
-      '/lovable-uploads/toldoretratil/aluminio/1.jpg',
-      '/lovable-uploads/toldoretratil/aluminio/2.jpg'
+      'https://via.placeholder.com/300x200.png?text=Aluminio+1',
+      'https://via.placeholder.com/300x200.png?text=Aluminio+2'
     ],
     'policarbonato': [
-      '/lovable-uploads/toldoretratil/policarboneto/1.jpg',
-      '/lovable-uploads/toldoretratil/policarboneto/2.jpg'
+      'https://via.placeholder.com/300x200.png?text=Policarbonato+1',
+      'https://via.placeholder.com/300x200.png?text=Policarbonato+2'
     ],
     'sanefa': [
       '/lovable-uploads/toldoretratil/sanefa/PHOTO-2022-11-19-11-41-22(1).jpg',
@@ -68,13 +71,13 @@ const CatalogoPage = () => {
       '/lovable-uploads/garagenstelha/IMG_7754.jpg'
     ],
     'modelo-francis': [
-      '/lovable-uploads/modeloFRANCIS/1.jpg'
+      'https://via.placeholder.com/300x200.png?text=Francis+1'
     ],
     'sombrites': [
-      '/lovable-uploads/sombrites/1.jpg'
+      'https://via.placeholder.com/300x200.png?text=Sombrite+1'
     ],
     'tendas': [
-      '/lovable-uploads/tendas/1.jpg'
+      'https://via.placeholder.com/300x200.png?text=Tenda+1'
     ],
   };
 
@@ -124,6 +127,7 @@ const CatalogoPage = () => {
   ];
 
   const handleCategoryClick = (categoryId: string) => {
+    console.log('Categoria clicada:', categoryId);
     const category = categories.find(cat => cat.id === categoryId);
     
     if (category?.subcategories) {
@@ -140,16 +144,23 @@ const CatalogoPage = () => {
       setCurrentImages([]);
     } else {
       // No subcategories - show images directly
+      console.log('Categoria sem subcategorias, mostrando imagens:', imageData[categoryId]);
       setActiveCategory(categoryId);
       setActiveSubcategory(null);
-      setCurrentImages(imageData[categoryId] || []);
+      const images = imageData[categoryId] || [];
+      console.log('Definindo imagens para categoria:', images);
+      setCurrentImages(images);
       setExpandedCategories(new Set());
     }
   };
 
   const handleSubcategoryClick = (subcategoryId: string) => {
+    console.log('Subcategoria clicada:', subcategoryId);
+    console.log('Imagens disponíveis:', imageData[subcategoryId]);
     setActiveSubcategory(subcategoryId);
-    setCurrentImages(imageData[subcategoryId] || []);
+    const images = imageData[subcategoryId] || [];
+    console.log('Definindo imagens:', images);
+    setCurrentImages(images);
   };
 
   return (
@@ -239,7 +250,11 @@ const CatalogoPage = () => {
                         className="w-full h-48 object-cover rounded-lg shadow-md transition-transform duration-300 group-hover:scale-105"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
-                          target.src = `https://via.placeholder.com/250x200.png?text=Imagem+${index + 1}`;
+                          console.log('Erro ao carregar imagem:', imageSrc);
+                          target.src = `https://via.placeholder.com/300x200.png?text=Imagem+${index + 1}`;
+                        }}
+                        onLoad={() => {
+                          console.log('Imagem carregada com sucesso:', imageSrc);
                         }}
                       />
                     </div>
