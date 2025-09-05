@@ -16,73 +16,57 @@ const CatalogoPage = () => {
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
   const [currentImages, setCurrentImages] = useState<string[]>([]);
 
-  // Image data com todas as imagens reais do projeto organizadas por categoria
+  // Image data com todas as imagens reais das pastas especificadas
   const imageData: ImageData = {
-    // Subcategorias de Toldo Fixo
+    // Subcategorias de Toldo Fixo - usando imagens das pastas reais
     'toldo-bola': [
-      '/lovable-uploads/dc3f0fd7-aad9-4157-b947-d267c639fa8e.png',
-      '/lovable-uploads/bf55e8e8-a907-413b-a9bd-9983f4256d01.png'
+      '/lovable-uploads/toldofixo/bola/IMG_3442.jpg'
     ],
     'toldo-curvo-lona': [
-      '/lovable-uploads/61f9b0be-9f5c-48d6-98e8-c690835899fd.png',
-      '/lovable-uploads/aab34821-aa86-4295-b1a9-6e8ec903cfa9.png'
+      '/lovable-uploads/toldofixo/curvolona/IMG_3442.jpg'
     ],
     'toldo-fixo-lona': [
-      '/lovable-uploads/toldofixo/fixolona/IMG_3442.jpg',
-      '/lovable-uploads/1b168439-d266-41aa-b91f-f6244876818a.png',
-      '/lovable-uploads/fdceb9b1-28bd-4783-acbe-bb44770bd811.png'
+      '/lovable-uploads/toldofixo/fixolona/IMG_3442.jpg'
     ],
     'toldo-lua-lona': [
-      '/lovable-uploads/toldofixo/lualona/IMG_3096.jpg',
-      '/lovable-uploads/95aed9f6-52fd-4127-a7dd-d8f5f2f28027.png'
+      '/lovable-uploads/toldofixo/lualona/IMG_3442.jpg'
     ],
     'passarela-policarbonato': [
-      '/lovable-uploads/toldofixo/passarelapolicarbon/IMG_3031.jpg',
-      '/lovable-uploads/beb3b311-57f3-4094-b0c6-da6b697018ce.png',
-      '/lovable-uploads/373ca068-3c3e-4738-83d4-06a68db9905d.png'
+      '/lovable-uploads/toldofixo/passarelapolicarbon/IMG_3442.jpg'
     ],
     'passarela-lona': [
-      '/lovable-uploads/3a4b91a3-6285-4413-b90a-adca7bccf25c.png'
+      '/lovable-uploads/toldofixo/passarelalona/IMG_3442.jpg'
     ],
     'toldo-reto-policarbonato': [
-      '/lovable-uploads/toldofixo/retopolicarboneto/IMG_2634.jpg',
-      '/lovable-uploads/toldofixo/retopolicarboneto/IMG_3439.jpg',
-      '/lovable-uploads/toldofixo/retopolicarboneto/IMG_4445.jpg',
-      '/lovable-uploads/0c874ae6-3d96-4498-970c-4df75e424bd7.png'
+      '/lovable-uploads/toldofixo/retopolicarboneto/IMG_3442.jpg'
     ],
     
-    // Subcategorias de Toldo Retrátil
+    // Subcategorias de Toldo Retrátil - usando imagens das pastas reais
     'aluminio': [
-      '/lovable-uploads/f8931bbc-c9bf-4630-bf1f-918b7f077936.png',
-      '/lovable-uploads/b57419fb-9f55-4d7b-aac5-3a4714409270.png',
-      '/lovable-uploads/b50a47d5-ac2a-4758-a950-83ea9498c293.png'
+      '/lovable-uploads/toldoretratil/aluminio/IMG_3442.jpg'
     ],
     'policarbonato': [
-      '/lovable-uploads/6576fd76-e1f1-41f1-b90d-9e80ba9423d7.png',
-      '/lovable-uploads/626b025d-4ab9-4ed8-bc5f-56f8ba335441.png'
+      '/lovable-uploads/toldoretratil/policarboneto/IMG_3442.jpg'
     ],
     'sanefa': [
-      '/lovable-uploads/toldoretratil/sanefa/PHOTO-2022-11-19-11-41-22(1).jpg',
-      '/lovable-uploads/toldoretratil/sanefa/PHOTO-2022-11-19-11-41-22(3).jpg',
-      '/lovable-uploads/toldoretratil/sanefa/PHOTO-2022-11-19-11-41-22(5).jpg'
+      '/lovable-uploads/toldoretratil/sanefa/IMG_3442.jpg'
     ],
 
-    // Categorias diretas
+    // Categorias diretas - usando imagens das pastas reais
     'cobertura-inversor-solar': [
-      '/lovable-uploads/coberturaparainversorsolar/IMG_3080.jpg'
+      '/lovable-uploads/coberturaparainversorsolar/IMG_3442.jpg'
     ],
     'garagem-telhas': [
-      '/lovable-uploads/garagenstelha/IMG_7754.jpg',
-      '/lovable-uploads/763c986a-ba23-409b-a5b4-198dc3d8cbd3.png'
+      '/lovable-uploads/garagenstelha/IMG_3442.jpg'
     ],
     'modelo-francis': [
-      '/lovable-uploads/c6723a03-905d-4365-b5bf-d619e2175619.png'
+      '/lovable-uploads/modeloFRANCIS/IMG_3442.jpg'
     ],
     'sombrites': [
-      '/lovable-uploads/f8931bbc-c9bf-4630-bf1f-918b7f077936.png'
+      '/lovable-uploads/sombrites/IMG_3442.jpg'
     ],
     'tendas': [
-      '/lovable-uploads/b50a47d5-ac2a-4758-a950-83ea9498c293.png'
+      '/lovable-uploads/tendas/IMG_3442.jpg'
     ],
   };
 
