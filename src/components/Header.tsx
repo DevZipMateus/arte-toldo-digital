@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, Phone, Clock, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -15,10 +16,11 @@ const Header = React.memo(() => {
   }, []);
 
   const navigationItems = useMemo(() => [
-    { label: 'Início', id: 'inicio' },
-    { label: 'Sobre', id: 'sobre' },
-    { label: 'Produtos', id: 'produtos' },
-    { label: 'Contato', id: 'contato' }
+    { label: 'Início', id: 'inicio', type: 'scroll' },
+    { label: 'Sobre', id: 'sobre', type: 'scroll' },
+    { label: 'Produtos', id: 'produtos', type: 'scroll' },
+    { label: 'Ver Todos os Produtos', id: '/produtos', type: 'link' },
+    { label: 'Contato', id: 'contato', type: 'scroll' }
   ], []);
 
   return (
@@ -47,13 +49,23 @@ const Header = React.memo(() => {
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
               {navigationItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="font-medium text-arte-blue-royal hover:text-arte-blue-light transition-colors whitespace-nowrap"
-                >
-                  {item.label}
-                </button>
+                item.type === 'link' ? (
+                  <Link
+                    key={item.id}
+                    to={item.id}
+                    className="font-medium text-arte-blue-royal hover:text-arte-blue-light transition-colors whitespace-nowrap"
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className="font-medium text-arte-blue-royal hover:text-arte-blue-light transition-colors whitespace-nowrap"
+                  >
+                    {item.label}
+                  </button>
+                )
               ))}
             </nav>
 
@@ -87,13 +99,24 @@ const Header = React.memo(() => {
             <div className="container mx-auto px-4 py-4 sm:py-6">
               <nav className="flex flex-col space-y-3 sm:space-y-4">
                 {navigationItems.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className="text-arte-blue-royal font-medium py-2 text-left hover:text-arte-blue-light transition-colors text-base"
-                  >
-                    {item.label}
-                  </button>
+                  item.type === 'link' ? (
+                    <Link
+                      key={item.id}
+                      to={item.id}
+                      className="text-arte-blue-royal font-medium py-2 text-left hover:text-arte-blue-light transition-colors text-base"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <button
+                      key={item.id}
+                      onClick={() => scrollToSection(item.id)}
+                      className="text-arte-blue-royal font-medium py-2 text-left hover:text-arte-blue-light transition-colors text-base"
+                    >
+                      {item.label}
+                    </button>
+                  )
                 ))}
                 <Button 
                   className="bg-arte-blue-royal text-white hover:bg-arte-blue-navy mt-4 w-full"
