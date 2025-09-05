@@ -42,7 +42,7 @@ const Header = React.memo(() => {
     { label: 'Início', id: 'inicio', type: 'scroll' },
     { label: 'Sobre', id: 'sobre', type: 'scroll' },
     { label: 'Catálogo', id: 'produtos', type: 'scroll' },
-    { label: 'Ver Catálogo Completo', id: '/produtos', type: 'link' },
+    { label: 'Ver Catálogo Completo', id: '/catalog', type: 'link' },
     { label: 'Contato', id: 'contato', type: 'scroll' }
   ], []);
 
