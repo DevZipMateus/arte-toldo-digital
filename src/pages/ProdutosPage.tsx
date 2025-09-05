@@ -24,32 +24,22 @@ const ProdutosPage = () => {
   // Função para carregar todas as imagens de uma pasta específica
   const getImagesForSubcategory = (categoryId: string, subcategoryId: string) => {
     if (categoryId === 'toldos-fixos' && subcategoryId === 'bola') {
-      // Lista todas as imagens da pasta toldofixo/bola
-      const bola_images = [];
-      for (let i = 1; i <= 20; i++) {
-        // Tenta diferentes extensões e números
-        ['jpg', 'jpeg', 'png', 'webp'].forEach(ext => {
-          bola_images.push(`/lovable-uploads/toldofixo/bola/image${i}.${ext}`);
-          bola_images.push(`/lovable-uploads/toldofixo/bola/bola${i}.${ext}`);
-          bola_images.push(`/lovable-uploads/toldofixo/bola/toldo${i}.${ext}`);
-          bola_images.push(`/lovable-uploads/toldofixo/bola/${i}.${ext}`);
-        });
+      const baseUrl = '/lovable-uploads/toldofixo/bola/';
+      const imagePatterns = [];
+      
+      // Padrões mais focados baseados nas imagens que existem
+      for (let i = 8; i <= 12; i++) {
+        const patterns = [
+          `${i}.jpg`, `${i}.jpeg`, `${i}.png`, `${i}.webp`,
+          `bola${i}.jpg`, `bola${i}.jpeg`, `bola${i}.png`, `bola${i}.webp`,
+          `toldo${i}.jpg`, `toldo${i}.jpeg`, `toldo${i}.png`, `toldo${i}.webp`,
+          `image${i}.jpg`, `image${i}.jpeg`, `image${i}.png`, `image${i}.webp`
+        ];
+        imagePatterns.push(...patterns.map(pattern => baseUrl + pattern));
       }
       
-      // Adiciona nomes comuns de arquivo
-      const commonNames = [
-        'main', 'principal', 'frente', 'lateral', 'detalhe', 'close',
-        'vista1', 'vista2', 'vista3', 'foto1', 'foto2', 'foto3',
-        'exemplo1', 'exemplo2', 'modelo1', 'modelo2'
-      ];
-      
-      commonNames.forEach(name => {
-        ['jpg', 'jpeg', 'png', 'webp'].forEach(ext => {
-          bola_images.push(`/lovable-uploads/toldofixo/bola/${name}.${ext}`);
-        });
-      });
-      
-      return bola_images;
+      console.log('Generated image patterns:', imagePatterns);
+      return imagePatterns;
     }
     return [];
   };

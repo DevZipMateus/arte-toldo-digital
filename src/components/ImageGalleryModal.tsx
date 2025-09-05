@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface ImageGalleryModalProps {
   trigger: React.ReactNode;
@@ -19,21 +19,31 @@ const ImageGalleryModal = ({ trigger, title, images }: ImageGalleryModalProps) =
   React.useEffect(() => {
     if (isOpen && images.length > 0) {
       setLoading(true);
+      console.log('Validating images:', images);
+      
       const checkImages = async () => {
         const validImageUrls: string[] = [];
         
-        for (const imageUrl of images) {
+        // Validar até 10 imagens por vez para não sobrecarregar
+        const imagesToCheck = images.slice(0, 50);
+        
+        const promises = imagesToCheck.map(async (imageUrl) => {
           try {
             const response = await fetch(imageUrl, { method: 'HEAD' });
             if (response.ok) {
-              validImageUrls.push(imageUrl);
+              return imageUrl;
             }
           } catch (error) {
-            // Imagem não existe, ignora
+            console.log('Image not found:', imageUrl);
           }
-        }
+          return null;
+        });
         
-        setValidImages(validImageUrls);
+        const results = await Promise.all(promises);
+        const valid = results.filter((url): url is string => url !== null);
+        
+        console.log('Valid images found:', valid.length);
+        setValidImages(valid);
         setLoading(false);
         setCurrentImageIndex(0);
       };
@@ -50,9 +60,7 @@ const ImageGalleryModal = ({ trigger, title, images }: ImageGalleryModalProps) =
     setCurrentImageIndex((prev) => (prev - 1 + validImages.length) % validImages.length);
   };
 
-  if (validImages.length === 0 && !loading) {
-    return null;
-  }
+  // Sempre renderizar o modal, mesmo sem imagens válidas
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -64,6 +72,9 @@ const ImageGalleryModal = ({ trigger, title, images }: ImageGalleryModalProps) =
           <DialogTitle className="text-xl font-bold text-arte-blue-royal">
             {title} - Galeria de Imagens
           </DialogTitle>
+          <DialogDescription className="text-muted-foreground">
+            Visualize as imagens do produto selecionado
+          </DialogDescription>
         </DialogHeader>
         
         <div className="flex-1 flex flex-col items-center justify-center p-6 pt-2">
