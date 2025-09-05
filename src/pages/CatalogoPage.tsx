@@ -16,46 +16,50 @@ const CatalogoPage = () => {
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
   const [currentImages, setCurrentImages] = useState<string[]>([]);
 
-  // Image data com apenas as imagens que realmente existem no projeto
+  // Image data com todas as imagens reais do projeto organizadas por categoria
   const imageData: ImageData = {
-    // Subcategorias de Toldo Fixo - usando apenas imagens que existem
+    // Subcategorias de Toldo Fixo
     'toldo-bola': [
-      // Estas imagens não existem ainda, usando placeholder
-      'https://via.placeholder.com/300x200.png?text=Toldo+Bola+1',
-      'https://via.placeholder.com/300x200.png?text=Toldo+Bola+2'
+      '/lovable-uploads/dc3f0fd7-aad9-4157-b947-d267c639fa8e.png',
+      '/lovable-uploads/bf55e8e8-a907-413b-a9bd-9983f4256d01.png'
     ],
     'toldo-curvo-lona': [
-      'https://via.placeholder.com/300x200.png?text=Toldo+Curvo+1'
+      '/lovable-uploads/61f9b0be-9f5c-48d6-98e8-c690835899fd.png',
+      '/lovable-uploads/aab34821-aa86-4295-b1a9-6e8ec903cfa9.png'
     ],
     'toldo-fixo-lona': [
-      // Esta imagem existe no projeto
       '/lovable-uploads/toldofixo/fixolona/IMG_3442.jpg',
-      // Placeholder para outras
-      'https://via.placeholder.com/300x200.png?text=Toldo+Fixo+2'
+      '/lovable-uploads/1b168439-d266-41aa-b91f-f6244876818a.png',
+      '/lovable-uploads/fdceb9b1-28bd-4783-acbe-bb44770bd811.png'
     ],
     'toldo-lua-lona': [
-      '/lovable-uploads/toldofixo/lualona/IMG_3096.jpg'
+      '/lovable-uploads/toldofixo/lualona/IMG_3096.jpg',
+      '/lovable-uploads/95aed9f6-52fd-4127-a7dd-d8f5f2f28027.png'
     ],
     'passarela-policarbonato': [
-      '/lovable-uploads/toldofixo/passarelapolicarbon/IMG_3031.jpg'
+      '/lovable-uploads/toldofixo/passarelapolicarbon/IMG_3031.jpg',
+      '/lovable-uploads/beb3b311-57f3-4094-b0c6-da6b697018ce.png',
+      '/lovable-uploads/373ca068-3c3e-4738-83d4-06a68db9905d.png'
     ],
     'passarela-lona': [
-      'https://via.placeholder.com/300x200.png?text=Passarela+Lona+1'
+      '/lovable-uploads/3a4b91a3-6285-4413-b90a-adca7bccf25c.png'
     ],
     'toldo-reto-policarbonato': [
       '/lovable-uploads/toldofixo/retopolicarboneto/IMG_2634.jpg',
       '/lovable-uploads/toldofixo/retopolicarboneto/IMG_3439.jpg',
-      '/lovable-uploads/toldofixo/retopolicarboneto/IMG_4445.jpg'
+      '/lovable-uploads/toldofixo/retopolicarboneto/IMG_4445.jpg',
+      '/lovable-uploads/0c874ae6-3d96-4498-970c-4df75e424bd7.png'
     ],
     
     // Subcategorias de Toldo Retrátil
     'aluminio': [
-      'https://via.placeholder.com/300x200.png?text=Aluminio+1',
-      'https://via.placeholder.com/300x200.png?text=Aluminio+2'
+      '/lovable-uploads/f8931bbc-c9bf-4630-bf1f-918b7f077936.png',
+      '/lovable-uploads/b57419fb-9f55-4d7b-aac5-3a4714409270.png',
+      '/lovable-uploads/b50a47d5-ac2a-4758-a950-83ea9498c293.png'
     ],
     'policarbonato': [
-      'https://via.placeholder.com/300x200.png?text=Policarbonato+1',
-      'https://via.placeholder.com/300x200.png?text=Policarbonato+2'
+      '/lovable-uploads/6576fd76-e1f1-41f1-b90d-9e80ba9423d7.png',
+      '/lovable-uploads/626b025d-4ab9-4ed8-bc5f-56f8ba335441.png'
     ],
     'sanefa': [
       '/lovable-uploads/toldoretratil/sanefa/PHOTO-2022-11-19-11-41-22(1).jpg',
@@ -68,16 +72,17 @@ const CatalogoPage = () => {
       '/lovable-uploads/coberturaparainversorsolar/IMG_3080.jpg'
     ],
     'garagem-telhas': [
-      '/lovable-uploads/garagenstelha/IMG_7754.jpg'
+      '/lovable-uploads/garagenstelha/IMG_7754.jpg',
+      '/lovable-uploads/763c986a-ba23-409b-a5b4-198dc3d8cbd3.png'
     ],
     'modelo-francis': [
-      'https://via.placeholder.com/300x200.png?text=Francis+1'
+      '/lovable-uploads/c6723a03-905d-4365-b5bf-d619e2175619.png'
     ],
     'sombrites': [
-      'https://via.placeholder.com/300x200.png?text=Sombrite+1'
+      '/lovable-uploads/f8931bbc-c9bf-4630-bf1f-918b7f077936.png'
     ],
     'tendas': [
-      'https://via.placeholder.com/300x200.png?text=Tenda+1'
+      '/lovable-uploads/b50a47d5-ac2a-4758-a950-83ea9498c293.png'
     ],
   };
 
@@ -127,7 +132,6 @@ const CatalogoPage = () => {
   ];
 
   const handleCategoryClick = (categoryId: string) => {
-    console.log('Categoria clicada:', categoryId);
     const category = categories.find(cat => cat.id === categoryId);
     
     if (category?.subcategories) {
@@ -144,22 +148,17 @@ const CatalogoPage = () => {
       setCurrentImages([]);
     } else {
       // No subcategories - show images directly
-      console.log('Categoria sem subcategorias, mostrando imagens:', imageData[categoryId]);
       setActiveCategory(categoryId);
       setActiveSubcategory(null);
       const images = imageData[categoryId] || [];
-      console.log('Definindo imagens para categoria:', images);
       setCurrentImages(images);
       setExpandedCategories(new Set());
     }
   };
 
   const handleSubcategoryClick = (subcategoryId: string) => {
-    console.log('Subcategoria clicada:', subcategoryId);
-    console.log('Imagens disponíveis:', imageData[subcategoryId]);
     setActiveSubcategory(subcategoryId);
     const images = imageData[subcategoryId] || [];
-    console.log('Definindo imagens:', images);
     setCurrentImages(images);
   };
 
@@ -250,11 +249,7 @@ const CatalogoPage = () => {
                         className="w-full h-48 object-cover rounded-lg shadow-md transition-transform duration-300 group-hover:scale-105"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
-                          console.log('Erro ao carregar imagem:', imageSrc);
                           target.src = `https://via.placeholder.com/300x200.png?text=Imagem+${index + 1}`;
-                        }}
-                        onLoad={() => {
-                          console.log('Imagem carregada com sucesso:', imageSrc);
                         }}
                       />
                     </div>
