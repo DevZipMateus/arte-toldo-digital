@@ -362,13 +362,21 @@ const ProdutosPage = () => {
                                 </p>
 
 
-                                <Button 
-                                  className="w-full bg-arte-blue-royal hover:bg-arte-blue-navy text-white text-sm py-2" 
-                                  onClick={scrollToContact}
-                                >
-                                  <Phone className="w-3 h-3 mr-2" />
-                                  Solicitar Orçamento
-                                </Button>
+                                <div className="flex gap-2">
+                                  <Button 
+                                    className="flex-1 bg-arte-blue-royal hover:bg-arte-blue-navy text-white text-sm py-2" 
+                                    onClick={scrollToContact}
+                                  >
+                                    <Phone className="w-3 h-3 mr-2" />
+                                    Solicitar Orçamento
+                                  </Button>
+                                  <Button 
+                                    variant="outline"
+                                    className="flex-1 border-arte-blue-royal text-arte-blue-royal hover:bg-arte-blue-royal hover:text-white text-sm py-2"
+                                  >
+                                    Ver Imagens
+                                  </Button>
+                                </div>
                               </div>
                             </Card>
                           ))}
