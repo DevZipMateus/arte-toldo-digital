@@ -126,7 +126,17 @@ const CatalogoPage = () => {
       '/lovable-uploads/toldoretratil/aluminio/IMG_3452.jpg'
     ],
     'policarbonato': [
-      '/lovable-uploads/toldoretratil/policarboneto/IMG_3442.jpg'
+      '/lovable-uploads/toldoretratil/policarboneto/IMG_3442.jpg',
+      '/lovable-uploads/toldoretratil/policarboneto/IMG_3443.jpg',
+      '/lovable-uploads/toldoretratil/policarboneto/IMG_3444.jpg',
+      '/lovable-uploads/toldoretratil/policarboneto/IMG_3445.jpg',
+      '/lovable-uploads/toldoretratil/policarboneto/IMG_3446.jpg',
+      '/lovable-uploads/toldoretratil/policarboneto/IMG_3447.jpg',
+      '/lovable-uploads/toldoretratil/policarboneto/IMG_3448.jpg',
+      '/lovable-uploads/toldoretratil/policarboneto/IMG_3449.jpg',
+      '/lovable-uploads/toldoretratil/policarboneto/IMG_3450.jpg',
+      '/lovable-uploads/toldoretratil/policarboneto/IMG_3451.jpg',
+      '/lovable-uploads/toldoretratil/policarboneto/IMG_3452.jpg'
     ],
     'sanefa': [
       '/lovable-uploads/toldoretratil/sanefa/IMG_3442.jpg'
