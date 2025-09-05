@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppFloat from '@/components/WhatsAppFloat';
+import ImageGalleryModal from '@/components/ImageGalleryModal';
 
 const ProdutosPage = () => {
   const scrollToContact = () => {
@@ -18,6 +19,19 @@ const ProdutosPage = () => {
       // Se não estiver na página principal, redirecionar
       window.location.href = '/#contato';
     }
+  };
+
+  // Imagens para cada subcategoria
+  const getImagesForSubcategory = (categoryId: string, subcategoryId: string) => {
+    const imageMap: { [key: string]: string[] } = {
+      'toldos-fixos-bola': [
+        '/lovable-uploads/toldofixo/bola/image1.jpg',
+        '/lovable-uploads/toldofixo/bola/image2.jpg',
+        '/lovable-uploads/toldofixo/bola/image3.jpg'
+      ]
+      // Adicione mais mapeamentos conforme necessário
+    };
+    return imageMap[`${categoryId}-${subcategoryId}`] || [];
   };
 
   const MaterialBadge = ({ material }: { material: string }) => {
@@ -370,12 +384,28 @@ const ProdutosPage = () => {
                                     <Phone className="w-3 h-3 mr-2" />
                                     Solicitar Orçamento
                                   </Button>
-                                  <Button 
-                                    variant="outline"
-                                    className="flex-1 border-arte-blue-royal text-arte-blue-royal hover:bg-arte-blue-royal hover:text-white text-sm py-2"
-                                  >
-                                    Ver Imagens
-                                  </Button>
+                                  
+                                  {subcategory.id === 'bola' && category.id === 'toldos-fixos' ? (
+                                    <ImageGalleryModal
+                                      trigger={
+                                        <Button 
+                                          variant="outline"
+                                          className="flex-1 border-arte-blue-royal text-arte-blue-royal hover:bg-arte-blue-royal hover:text-white text-sm py-2"
+                                        >
+                                          Ver Imagens
+                                        </Button>
+                                      }
+                                      title={product.name}
+                                      images={getImagesForSubcategory(category.id, subcategory.id)}
+                                    />
+                                  ) : (
+                                    <Button 
+                                      variant="outline"
+                                      className="flex-1 border-arte-blue-royal text-arte-blue-royal hover:bg-arte-blue-royal hover:text-white text-sm py-2"
+                                    >
+                                      Ver Imagens
+                                    </Button>
+                                  )}
                                 </div>
                               </div>
                             </Card>
