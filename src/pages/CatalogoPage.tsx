@@ -16,208 +16,29 @@ const CatalogoPage = () => {
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
   const [currentImages, setCurrentImages] = useState<string[]>([]);
 
-  // Image data com todas as imagens reais das pastas especificadas
+  // Image data simplificado usando apenas a imagem real que existe
   const imageData: ImageData = {
-    // Subcategorias de Toldo Fixo - usando imagens das pastas reais
-    'toldo-bola': [
-      '/lovable-uploads/toldofixo/bola/IMG_3647.jpg',
-      '/lovable-uploads/toldofixo/bola/IMG_3648.jpg',
-      '/lovable-uploads/toldofixo/bola/IMG_3649.jpg',
-      '/lovable-uploads/toldofixo/bola/IMG_3650.jpg',
-      '/lovable-uploads/toldofixo/bola/IMG_3651.jpg',
-      '/lovable-uploads/toldofixo/bola/IMG_3652.jpg',
-      '/lovable-uploads/toldofixo/bola/IMG_3653.jpg',
-      '/lovable-uploads/toldofixo/bola/IMG_3654.jpg',
-      '/lovable-uploads/toldofixo/bola/IMG_3655.jpg',
-      '/lovable-uploads/toldofixo/bola/IMG_3656.jpg',
-      '/lovable-uploads/toldofixo/bola/IMG_3657.jpg'
-    ],
-    'toldo-curvo-lona': [
-      '/lovable-uploads/toldofixo/curvolona/IMG_3442.jpg',
-      '/lovable-uploads/toldofixo/curvolona/IMG_3443.jpg',
-      '/lovable-uploads/toldofixo/curvolona/IMG_3444.jpg',
-      '/lovable-uploads/toldofixo/curvolona/IMG_3445.jpg',
-      '/lovable-uploads/toldofixo/curvolona/IMG_3446.jpg',
-      '/lovable-uploads/toldofixo/curvolona/IMG_3447.jpg',
-      '/lovable-uploads/toldofixo/curvolona/IMG_3448.jpg',
-      '/lovable-uploads/toldofixo/curvolona/IMG_3449.jpg',
-      '/lovable-uploads/toldofixo/curvolona/IMG_3450.jpg',
-      '/lovable-uploads/toldofixo/curvolona/IMG_3451.jpg',
-      '/lovable-uploads/toldofixo/curvolona/IMG_3452.jpg'
-    ],
-    'toldo-fixo-lona': [
-      '/lovable-uploads/toldofixo/fixolona/IMG_3442.jpg',
-      '/lovable-uploads/toldofixo/fixolona/IMG_3443.jpg',
-      '/lovable-uploads/toldofixo/fixolona/IMG_3444.jpg',
-      '/lovable-uploads/toldofixo/fixolona/IMG_3445.jpg',
-      '/lovable-uploads/toldofixo/fixolona/IMG_3446.jpg',
-      '/lovable-uploads/toldofixo/fixolona/IMG_3447.jpg',
-      '/lovable-uploads/toldofixo/fixolona/IMG_3448.jpg',
-      '/lovable-uploads/toldofixo/fixolona/IMG_3449.jpg',
-      '/lovable-uploads/toldofixo/fixolona/IMG_3450.jpg',
-      '/lovable-uploads/toldofixo/fixolona/IMG_3451.jpg',
-      '/lovable-uploads/toldofixo/fixolona/IMG_3452.jpg'
-    ],
+    // Para demonstração, usando uma imagem placeholder que existe
     'toldo-lua-lona': [
-      '/lovable-uploads/toldofixo/lualona/IMG_3442.jpg',
-      '/lovable-uploads/toldofixo/lualona/IMG_3443.jpg',
-      '/lovable-uploads/toldofixo/lualona/IMG_3444.jpg',
-      '/lovable-uploads/toldofixo/lualona/IMG_3445.jpg',
-      '/lovable-uploads/toldofixo/lualona/IMG_3446.jpg',
-      '/lovable-uploads/toldofixo/lualona/IMG_3447.jpg',
-      '/lovable-uploads/toldofixo/lualona/IMG_3448.jpg',
-      '/lovable-uploads/toldofixo/lualona/IMG_3449.jpg',
-      '/lovable-uploads/toldofixo/lualona/IMG_3450.jpg',
-      '/lovable-uploads/toldofixo/lualona/IMG_3451.jpg',
-      '/lovable-uploads/toldofixo/lualona/IMG_3452.jpg'
-    ],
-    'passarela-policarbonato': [
-      '/lovable-uploads/toldofixo/passarelapolicarbon/IMG_3442.jpg',
-      '/lovable-uploads/toldofixo/passarelapolicarbon/IMG_3443.jpg',
-      '/lovable-uploads/toldofixo/passarelapolicarbon/IMG_3444.jpg',
-      '/lovable-uploads/toldofixo/passarelapolicarbon/IMG_3445.jpg',
-      '/lovable-uploads/toldofixo/passarelapolicarbon/IMG_3446.jpg',
-      '/lovable-uploads/toldofixo/passarelapolicarbon/IMG_3447.jpg',
-      '/lovable-uploads/toldofixo/passarelapolicarbon/IMG_3448.jpg',
-      '/lovable-uploads/toldofixo/passarelapolicarbon/IMG_3449.jpg',
-      '/lovable-uploads/toldofixo/passarelapolicarbon/IMG_3450.jpg',
-      '/lovable-uploads/toldofixo/passarelapolicarbon/IMG_3451.jpg',
-      '/lovable-uploads/toldofixo/passarelapolicarbon/IMG_3452.jpg'
-    ],
-    'passarela-lona': [
-      '/lovable-uploads/toldofixo/passarelalona/IMG_3442.jpg',
-      '/lovable-uploads/toldofixo/passarelalona/IMG_3443.jpg',
-      '/lovable-uploads/toldofixo/passarelalona/IMG_3444.jpg',
-      '/lovable-uploads/toldofixo/passarelalona/IMG_3445.jpg',
-      '/lovable-uploads/toldofixo/passarelalona/IMG_3446.jpg',
-      '/lovable-uploads/toldofixo/passarelalona/IMG_3447.jpg',
-      '/lovable-uploads/toldofixo/passarelalona/IMG_3448.jpg',
-      '/lovable-uploads/toldofixo/passarelalona/IMG_3449.jpg',
-      '/lovable-uploads/toldofixo/passarelalona/IMG_3450.jpg',
-      '/lovable-uploads/toldofixo/passarelalona/IMG_3451.jpg',
-      '/lovable-uploads/toldofixo/passarelalona/IMG_3452.jpg'
-    ],
-    'toldo-reto-policarbonato': [
-      '/lovable-uploads/toldofixo/retopolicarboneto/IMG_3442.jpg',
-      '/lovable-uploads/toldofixo/retopolicarboneto/IMG_3443.jpg',
-      '/lovable-uploads/toldofixo/retopolicarboneto/IMG_3444.jpg',
-      '/lovable-uploads/toldofixo/retopolicarboneto/IMG_3445.jpg',
-      '/lovable-uploads/toldofixo/retopolicarboneto/IMG_3446.jpg',
-      '/lovable-uploads/toldofixo/retopolicarboneto/IMG_3447.jpg',
-      '/lovable-uploads/toldofixo/retopolicarboneto/IMG_3448.jpg',
-      '/lovable-uploads/toldofixo/retopolicarboneto/IMG_3449.jpg',
-      '/lovable-uploads/toldofixo/retopolicarboneto/IMG_3450.jpg',
-      '/lovable-uploads/toldofixo/retopolicarboneto/IMG_3451.jpg',
-      '/lovable-uploads/toldofixo/retopolicarboneto/IMG_3452.jpg'
-    ],
-    
-    // Subcategorias de Toldo Retrátil - usando imagens das pastas reais
-    'aluminio': [
-      '/lovable-uploads/toldoretratil/aluminio/IMG_3442.jpg',
-      '/lovable-uploads/toldoretratil/aluminio/IMG_3443.jpg',
-      '/lovable-uploads/toldoretratil/aluminio/IMG_3444.jpg',
-      '/lovable-uploads/toldoretratil/aluminio/IMG_3445.jpg',
-      '/lovable-uploads/toldoretratil/aluminio/IMG_3446.jpg',
-      '/lovable-uploads/toldoretratil/aluminio/IMG_3447.jpg',
-      '/lovable-uploads/toldoretratil/aluminio/IMG_3448.jpg',
-      '/lovable-uploads/toldoretratil/aluminio/IMG_3449.jpg',
-      '/lovable-uploads/toldoretratil/aluminio/IMG_3450.jpg',
-      '/lovable-uploads/toldoretratil/aluminio/IMG_3451.jpg',
-      '/lovable-uploads/toldoretratil/aluminio/IMG_3452.jpg'
-    ],
-    'policarbonato': [
-      '/lovable-uploads/toldoretratil/policarboneto/IMG_3442.jpg',
-      '/lovable-uploads/toldoretratil/policarboneto/IMG_3443.jpg',
-      '/lovable-uploads/toldoretratil/policarboneto/IMG_3444.jpg',
-      '/lovable-uploads/toldoretratil/policarboneto/IMG_3445.jpg',
-      '/lovable-uploads/toldoretratil/policarboneto/IMG_3446.jpg',
-      '/lovable-uploads/toldoretratil/policarboneto/IMG_3447.jpg',
-      '/lovable-uploads/toldoretratil/policarboneto/IMG_3448.jpg',
-      '/lovable-uploads/toldoretratil/policarboneto/IMG_3449.jpg',
-      '/lovable-uploads/toldoretratil/policarboneto/IMG_3450.jpg',
-      '/lovable-uploads/toldoretratil/policarboneto/IMG_3451.jpg',
-      '/lovable-uploads/toldoretratil/policarboneto/IMG_3452.jpg'
+      '/lovable-uploads/toldofixo/lualona/IMG_4418.jpg'
     ],
     'sanefa': [
-      '/lovable-uploads/toldoretratil/sanefa/IMG_3442.jpg',
-      '/lovable-uploads/toldoretratil/sanefa/IMG_3443.jpg',
-      '/lovable-uploads/toldoretratil/sanefa/IMG_3444.jpg',
-      '/lovable-uploads/toldoretratil/sanefa/IMG_3445.jpg',
-      '/lovable-uploads/toldoretratil/sanefa/IMG_3446.jpg',
-      '/lovable-uploads/toldoretratil/sanefa/IMG_3447.jpg',
-      '/lovable-uploads/toldoretratil/sanefa/IMG_3448.jpg',
-      '/lovable-uploads/toldoretratil/sanefa/IMG_3449.jpg',
-      '/lovable-uploads/toldoretratil/sanefa/IMG_3450.jpg',
-      '/lovable-uploads/toldoretratil/sanefa/IMG_3451.jpg',
-      '/lovable-uploads/toldoretratil/sanefa/IMG_3452.jpg'
+      '/lovable-uploads/toldoretratil/sanefa/Arquivo_001.jpeg'
     ],
-
-    // Categorias diretas - usando imagens das pastas reais
-    'cobertura-inversor-solar': [
-      '/lovable-uploads/coberturaparainversorsolar/IMG_3442.jpg',
-      '/lovable-uploads/coberturaparainversorsolar/IMG_3443.jpg',
-      '/lovable-uploads/coberturaparainversorsolar/IMG_3444.jpg',
-      '/lovable-uploads/coberturaparainversorsolar/IMG_3445.jpg',
-      '/lovable-uploads/coberturaparainversorsolar/IMG_3446.jpg',
-      '/lovable-uploads/coberturaparainversorsolar/IMG_3447.jpg',
-      '/lovable-uploads/coberturaparainversorsolar/IMG_3448.jpg',
-      '/lovable-uploads/coberturaparainversorsolar/IMG_3449.jpg',
-      '/lovable-uploads/coberturaparainversorsolar/IMG_3450.jpg',
-      '/lovable-uploads/coberturaparainversorsolar/IMG_3451.jpg',
-      '/lovable-uploads/coberturaparainversorsolar/IMG_3452.jpg'
-    ],
-    'garagem-telhas': [
-      '/lovable-uploads/garagenstelha/IMG_3442.jpg',
-      '/lovable-uploads/garagenstelha/IMG_3443.jpg',
-      '/lovable-uploads/garagenstelha/IMG_3444.jpg',
-      '/lovable-uploads/garagenstelha/IMG_3445.jpg',
-      '/lovable-uploads/garagenstelha/IMG_3446.jpg',
-      '/lovable-uploads/garagenstelha/IMG_3447.jpg',
-      '/lovable-uploads/garagenstelha/IMG_3448.jpg',
-      '/lovable-uploads/garagenstelha/IMG_3449.jpg',
-      '/lovable-uploads/garagenstelha/IMG_3450.jpg',
-      '/lovable-uploads/garagenstelha/IMG_3451.jpg',
-      '/lovable-uploads/garagenstelha/IMG_3452.jpg'
-    ],
-    'modelo-francis': [
-      '/lovable-uploads/modeloFRANCIS/IMG_3442.jpg',
-      '/lovable-uploads/modeloFRANCIS/IMG_3443.jpg',
-      '/lovable-uploads/modeloFRANCIS/IMG_3444.jpg',
-      '/lovable-uploads/modeloFRANCIS/IMG_3445.jpg',
-      '/lovable-uploads/modeloFRANCIS/IMG_3446.jpg',
-      '/lovable-uploads/modeloFRANCIS/IMG_3447.jpg',
-      '/lovable-uploads/modeloFRANCIS/IMG_3448.jpg',
-      '/lovable-uploads/modeloFRANCIS/IMG_3449.jpg',
-      '/lovable-uploads/modeloFRANCIS/IMG_3450.jpg',
-      '/lovable-uploads/modeloFRANCIS/IMG_3451.jpg',
-      '/lovable-uploads/modeloFRANCIS/IMG_3452.jpg'
-    ],
-    'sombrites': [
-      '/lovable-uploads/sombrites/IMG_3442.jpg',
-      '/lovable-uploads/sombrites/IMG_3443.jpg',
-      '/lovable-uploads/sombrites/IMG_3444.jpg',
-      '/lovable-uploads/sombrites/IMG_3445.jpg',
-      '/lovable-uploads/sombrites/IMG_3446.jpg',
-      '/lovable-uploads/sombrites/IMG_3447.jpg',
-      '/lovable-uploads/sombrites/IMG_3448.jpg',
-      '/lovable-uploads/sombrites/IMG_3449.jpg',
-      '/lovable-uploads/sombrites/IMG_3450.jpg',
-      '/lovable-uploads/sombrites/IMG_3451.jpg',
-      '/lovable-uploads/sombrites/IMG_3452.jpg'
-    ],
-    'tendas': [
-      '/lovable-uploads/tendas/IMG_3442.jpg',
-      '/lovable-uploads/tendas/IMG_3443.jpg',
-      '/lovable-uploads/tendas/IMG_3444.jpg',
-      '/lovable-uploads/tendas/IMG_3445.jpg',
-      '/lovable-uploads/tendas/IMG_3446.jpg',
-      '/lovable-uploads/tendas/IMG_3447.jpg',
-      '/lovable-uploads/tendas/IMG_3448.jpg',
-      '/lovable-uploads/tendas/IMG_3449.jpg',
-      '/lovable-uploads/tendas/IMG_3450.jpg',
-      '/lovable-uploads/tendas/IMG_3451.jpg',
-      '/lovable-uploads/tendas/IMG_3452.jpg'
-    ],
+    // Todas as outras categorias usarão placeholder.svg temporariamente
+    'toldo-bola': ['/placeholder.svg'],
+    'toldo-curvo-lona': ['/placeholder.svg'],
+    'toldo-fixo-lona': ['/placeholder.svg'],
+    'passarela-policarbonato': ['/placeholder.svg'],
+    'passarela-lona': ['/placeholder.svg'],
+    'toldo-reto-policarbonato': ['/placeholder.svg'],
+    'aluminio': ['/placeholder.svg'],
+    'policarbonato': ['/placeholder.svg'],
+    'cobertura-inversor-solar': ['/placeholder.svg'],
+    'garagem-telhas': ['/placeholder.svg'],
+    'modelo-francis': ['/placeholder.svg'],
+    'sombrites': ['/placeholder.svg'],
+    'tendas': ['/placeholder.svg'],
   };
 
   const categories = [
