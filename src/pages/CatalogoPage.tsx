@@ -73,7 +73,14 @@ const CatalogoPage = () => {
       '/lovable-uploads/toldo fixo/toldo fixo lona/Cópia de PHOTO-2024-02-27-17-18-20.jpg',
       '/lovable-uploads/toldo fixo/toldo fixo lona/Cópia de PHOTO-2024-03-01-18-45-00.jpg'
     ],
-    'passarela-policarbonato': ['/placeholder.svg'],
+    'passarela-policarbonato': [
+      '/lovable-uploads/toldo fixo/toldo passarela em policarboneto/Cópia de 05645B1C-1ADF-4D17-A1B4-EFC87A7AB006.JPG',
+      '/lovable-uploads/toldo fixo/toldo passarela em policarboneto/Cópia de IMG_3034.jpg',
+      '/lovable-uploads/toldo fixo/toldo passarela em policarboneto/Cópia de f2af55e5-7209-4a86-8c7e-b65767941a5f.JPG',
+      '/lovable-uploads/toldo fixo/toldo passarela em policarboneto/IMG-20250704-WA0167.jpg',
+      '/lovable-uploads/toldo fixo/toldo passarela em policarboneto/IMG-20250704-WA0168.jpg',
+      '/lovable-uploads/toldo fixo/toldo passarela em policarboneto/IMG-20250704-WA0170.jpg'
+    ],
     'passarela-lona': ['/placeholder.svg'],
     'toldo-reto-policarbonato': [
       '/lovable-uploads/toldo fixo/toldo fixo policarboneto/Cópia de 1a9ad0fc-e1f1-4f9e-a5fc-e57b66ecf5f8.JPG',
