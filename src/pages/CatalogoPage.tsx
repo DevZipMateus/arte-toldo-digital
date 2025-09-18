@@ -22,6 +22,16 @@ const CatalogoPage = () => {
     'toldo-lua-lona': [
       '/lovable-uploads/toldofixo/lualona/IMG_4418.jpg'
     ],
+    'toldo-lua-policarbonato': [
+      '/lovable-uploads/toldo fixo/toldo lua em policarboneto/Cópia de IMG_1038.jpg',
+      '/lovable-uploads/toldo fixo/toldo lua em policarboneto/Cópia de IMG_2124.jpg',
+      '/lovable-uploads/toldo fixo/toldo lua em policarboneto/Cópia de IMG_4170.jpg',
+      '/lovable-uploads/toldo fixo/toldo lua em policarboneto/Cópia de IMG_8717.jpg',
+      '/lovable-uploads/toldo fixo/toldo lua em policarboneto/Cópia de IMG_8763.jpg',
+      '/lovable-uploads/toldo fixo/toldo lua em policarboneto/Cópia de dba4133b-32e4-43f9-844c-7755f605d966.JPG',
+      '/lovable-uploads/toldo fixo/toldo lua em policarboneto/Cópia de ec39413f-bb6e-455e-89d8-eda9a8bb6679.JPG',
+      '/lovable-uploads/toldo fixo/toldo lua em policarboneto/Cópia de ff5344d1-c824-4e38-94c7-389fa7cb3759.JPG'
+    ],
     'sanefa': [
       '/lovable-uploads/toldoretratil/sanefa/Arquivo_001.jpeg'
     ],
@@ -89,6 +99,7 @@ const CatalogoPage = () => {
         { id: 'toldo-curvo-lona', label: 'Toldo Curvo de Lona' },
         { id: 'toldo-fixo-lona', label: 'Toldo Fixo de Lona' },
         { id: 'toldo-lua-lona', label: 'Toldo Lua de Lona' },
+        { id: 'toldo-lua-policarbonato', label: 'Toldo Lua em Policarbonato' },
         { id: 'passarela-policarbonato', label: 'Passarela Policarbonato' },
         { id: 'passarela-lona', label: 'Passarela Lona' },
         { id: 'toldo-reto-policarbonato', label: 'Toldo Reto Policarbonato' },
