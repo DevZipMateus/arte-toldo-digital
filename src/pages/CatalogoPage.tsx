@@ -20,7 +20,15 @@ const CatalogoPage = () => {
   const imageData: ImageData = {
     // Para demonstração, usando uma imagem placeholder que existe
     'toldo-lua-lona': [
-      '/lovable-uploads/toldofixo/lualona/IMG_4418.jpg'
+      '/lovable-uploads/toldo fixo/toldo lua lona/Cópia de IMG_0182.jpg',
+      '/lovable-uploads/toldo fixo/toldo lua lona/Cópia de IMG_3094.jpg',
+      '/lovable-uploads/toldo fixo/toldo lua lona/Cópia de IMG_3095.jpg',
+      '/lovable-uploads/toldo fixo/toldo lua lona/Cópia de IMG_3097.jpg',
+      '/lovable-uploads/toldo fixo/toldo lua lona/Cópia de IMG_3786.jpg',
+      '/lovable-uploads/toldo fixo/toldo lua lona/Cópia de IMG_4412.jpg',
+      '/lovable-uploads/toldo fixo/toldo lua lona/Cópia de IMG_4610.jpg',
+      '/lovable-uploads/toldo fixo/toldo lua lona/Cópia de IMG_8423.jpg',
+      '/lovable-uploads/toldo fixo/toldo lua lona/Cópia de dcd43dad-a635-425e-b561-9afaeb24bee9.JPG'
     ],
     'toldo-lua-policarbonato': [
       '/lovable-uploads/toldo fixo/toldo lua em policarboneto/Cópia de IMG_1038.jpg',
