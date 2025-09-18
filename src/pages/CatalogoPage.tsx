@@ -33,7 +33,16 @@ const CatalogoPage = () => {
       '/lovable-uploads/toldo fixo/toldo bola/Cópia de IMG_9613.jpg',
       '/lovable-uploads/toldo fixo/toldo bola/Cópia de IMG_9614.jpg'
     ],
-    'toldo-curvo-lona': ['/placeholder.svg'],
+    'toldo-curvo-lona': [
+      '/lovable-uploads/toldo fixo/toldo curvo lona/Cópia de A7BA7293-C6A7-40BA-B0E9-2BD700AC281A.JPG',
+      '/lovable-uploads/toldo fixo/toldo curvo lona/Cópia de IMG_1633.jpg',
+      '/lovable-uploads/toldo fixo/toldo curvo lona/Cópia de IMG_1740.jpg',
+      '/lovable-uploads/toldo fixo/toldo curvo lona/IMG-20250815-WA0178.jpg',
+      '/lovable-uploads/toldo fixo/toldo curvo lona/IMG-20250815-WA0179.jpg',
+      '/lovable-uploads/toldo fixo/toldo curvo lona/IMG-20250815-WA0180.jpg',
+      '/lovable-uploads/toldo fixo/toldo curvo lona/IMG-20250903-WA0119.jpg',
+      '/lovable-uploads/toldo fixo/toldo curvo lona/IMG-20250903-WA0120.jpg'
+    ],
     'toldo-fixo-lona': ['/placeholder.svg'],
     'passarela-policarbonato': ['/placeholder.svg'],
     'passarela-lona': ['/placeholder.svg'],
