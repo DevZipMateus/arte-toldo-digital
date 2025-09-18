@@ -25,8 +25,14 @@ const CatalogoPage = () => {
     'sanefa': [
       '/lovable-uploads/toldoretratil/sanefa/Arquivo_001.jpeg'
     ],
-    // Todas as outras categorias usarão placeholder.svg temporariamente
-    'toldo-bola': ['/placeholder.svg'],
+    // Imagens do toldo bola do GitHub
+    'toldo-bola': [
+      '/lovable-uploads/toldo fixo/toldo bola/Cópia de IMG_3647.jpg',
+      '/lovable-uploads/toldo fixo/toldo bola/Cópia de IMG_4035.jpg',
+      '/lovable-uploads/toldo fixo/toldo bola/Cópia de IMG_4046.jpg',
+      '/lovable-uploads/toldo fixo/toldo bola/Cópia de IMG_9613.jpg',
+      '/lovable-uploads/toldo fixo/toldo bola/Cópia de IMG_9614.jpg'
+    ],
     'toldo-curvo-lona': ['/placeholder.svg'],
     'toldo-fixo-lona': ['/placeholder.svg'],
     'passarela-policarbonato': ['/placeholder.svg'],
